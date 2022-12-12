@@ -1,17 +1,18 @@
 import { z } from "zod";
 
-import { router, publicProcedure } from "../trpc";
+import { router, protectedProcedure } from "../trpc";
 
 export const userRouter = router({
-  getUser: publicProcedure
+  getUser: protectedProcedure
     .input(z.object({ email: z.string().email() }))
-    .query( async ({ input, ctx }) => {
+    .mutation( async ({ input, ctx }) => {
 
       const user = await ctx.prisma.user.findUnique({
         where: {
           email: input.email
         }
       })
+      
       return {
         userData: user
       };

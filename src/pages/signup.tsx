@@ -13,6 +13,7 @@ import { trpc } from '../utils/trpc'
 import { HiAtSymbol, HiFingerPrint, HiOutlineUser } from "react-icons/hi";
 
 import { useRouter } from 'next/router';
+import { hash } from 'bcryptjs'
 
 type Props = {}
 

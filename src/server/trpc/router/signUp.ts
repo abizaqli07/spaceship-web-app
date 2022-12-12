@@ -40,9 +40,6 @@ export const signUpRouter = router({
             })
           }
         }
-
-        console.log(e)
-        
         
       }
     })

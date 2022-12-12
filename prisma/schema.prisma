@@ -11,15 +11,82 @@ datasource db {
 }
 
 model User {
-  id       String  @id @default(cuid()) @db.Char(30)
-  email    String  @unique
-  password String
-  username String?
-  role     ROLE    @default(USER)
+  id        String     @id @default(cuid()) @db.Char(30)
+  email     String     @unique
+  password  String
+  username  String?
+  role      ROLE       @default(USER)
+  passenger passenger?
+  pilots    pilots?
+}
+
+model passenger {
+  id_passenger String   @id @default(cuid())
+  user         User?    @relation(fields: [userId], references: [id])
+  userId       String?  @unique @db.Char(30)
+  fullname     String
+  datebirth    String
+  gender       GENDER
+  no_tlp       String
+  created_at   DateTime @default(now())
+}
+
+model pilots {
+  id_pilot    String     @id @default(cuid())
+  user        User?      @relation(fields: [userId], references: [id])
+  name        String
+  image       String?
+  datebirth   DateTime
+  gender      GENDER
+  no_tlp      String
+  legal       String?
+  is_verified Boolean    @default(false)
+  schedule    schedule[]
+  userId      String?    @unique @db.Char(30)
+}
+
+model spaceship {
+  id_spaceship String     @id @default(cuid())
+  name         String
+  image        String?
+  description  String
+  model        String
+  created_at   DateTime   @default(now())
+  schedule     schedule[]
+}
+
+model planet {
+  id_planet    String     @id @default(cuid())
+  image        String?
+  description  String
+  distance     BigInt
+  is_explored  Boolean
+  is_populated Boolean
+  created_at   DateTime   @default(now())
+  schedule     schedule[]
+}
+
+model schedule {
+  id_schedule String    @id @default(cuid())
+  price       BigInt
+  capacity    Int
+  destination planet    @relation(fields: [planetId], references: [id_planet])
+  planetId    String
+  pilot       pilots    @relation(fields: [pilotsId], references: [id_pilot])
+  pilotsId    String
+  spaceship   spaceship @relation(fields: [spaceshipId], references: [id_spaceship])
+  spaceshipId String
+  time_depart DateTime
+  time_land   DateTime
 }
 
 enum ROLE {
   USER
   PILOT
   ADMIN
+}
+
+enum GENDER {
+  MALE
+  FEMALE
 }

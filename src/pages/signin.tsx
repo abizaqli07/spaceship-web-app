@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { signIn, useSession } from 'next-auth/react'
 
 import Head from 'next/head'
@@ -13,10 +13,12 @@ import { trpc } from '../utils/trpc'
 
 
 import { HiAtSymbol, HiFingerPrint } from "react-icons/hi";
+import { hash } from 'bcryptjs'
 
 type Props = {}
 
 const Signin = (props: Props) => {
+
   const [show, setShow] = useState(false)
   const router = useRouter()
 
@@ -34,13 +36,14 @@ const Signin = (props: Props) => {
       redirect: false,
       email: values.email,
       password: values.password,
-      callbackUrl: "/"
+      callbackUrl: "/redirect"
     });
 
     if (status?.ok) {
       router.push(status.url!)
     }
   }
+
 
   return (
     <Layout>
@@ -95,7 +98,7 @@ const Signin = (props: Props) => {
 
         {/* Bottom */}
         <div className='text-center text-gray-400 '>
-          don't have an account yet? <Link href={'/register'}><div className='text-blue-700'>Sign Up</div></Link>
+          don't have an account yet? <Link href={'/signup'}><div className='text-blue-700'>Sign Up</div></Link>
         </div>
       </section>
     </Layout>
