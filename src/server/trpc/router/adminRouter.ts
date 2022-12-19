@@ -1,7 +1,9 @@
-import { TRPCError } from "@trpc/server";
-import { z } from "zod";
-
-import { router, publicProcedure, protectedProcedure } from "../trpc";
+import { protectedProcedure, router } from "../trpc";
+import { adminPassengerRoute } from "./adminRoute/passenger";
+import { adminPilotsRoute } from "./adminRoute/pilots";
+import { adminPlanetRoute } from "./adminRoute/planet";
+import { adminScheduleRoute } from "./adminRoute/schedule";
+import { adminSpaceshipRoute } from "./adminRoute/spaceship";
 
 export const adminRouter = router({
   getUser: protectedProcedure
@@ -17,66 +19,46 @@ export const adminRouter = router({
         userData: user
       };
     }),
-  getSpaceship: protectedProcedure
-    .mutation(async ({ ctx }) => {
-      const spaceship = await ctx.prisma.spaceship.findMany()
+  getIdObject: protectedProcedure
+    .query(async ({ ctx }) => {
+      const pilotId = await ctx.prisma.pilots.findMany({
+        select: {
+          id_pilot: true,
+          name: true,
+          is_verified: true
+        },
+        orderBy: {
+          is_verified: 'asc'
+        },
+      })
 
-      return {
-        spaceshipData: spaceship
-      }
-
-    }),
-  inputSpaceship: protectedProcedure
-    .input(z.object({
-      name: z.string(),
-      image: z.string().nullable(),
-      description: z.string(),
-      model: z.string()
-    }))
-    .mutation(async ({ input, ctx }) => {
-      try {
-        const insert = await ctx.prisma.spaceship.create({
-          data: {
-            name: input.name,
-            image: input.image,
-            description: input.description,
-            model: input.model
-          }
-        })
-      } catch (e) {
-        return {
-          success: false,
-          messsage: "Some error occured",
-          error: e
+      const spaceshipId = await ctx.prisma.spaceship.findMany({
+        select: {
+          id_spaceship: true,
+          name: true
+        },
+        orderBy: {
+          created_at: 'desc'
         }
-      }
+      })
+
+      const planetId = await ctx.prisma.planet.findMany({
+        select: {
+          id_planet: true
+        },
+        orderBy: {
+          created_at: 'desc'
+        }
+      })
+
 
       return {
-        success: true,
-        messsage: "Spaceship succesfully created"
+        dataId: { pilotId, spaceshipId, planetId }
       }
     }),
-  deleteSpaceship: protectedProcedure
-    .input(z.object({ id: z.string().cuid() }))
-    .mutation(async ({ input, ctx }) => {
-      try {
-        const del = await ctx.prisma.spaceship.delete({
-          where: {
-            id_spaceship: input.id
-          }
-        })
-      } catch (e) {
-        return {
-          success: false,
-          message: "Some error occured while deleting",
-          error: e
-        }
-      }
-
-      return {
-        success: true,
-        message: "Success deleting spaceship",
-      }
-    })
-
+  spaceship: adminSpaceshipRoute,
+  planet: adminPlanetRoute,
+  schedule: adminScheduleRoute,
+  passenger: adminPassengerRoute,
+  pilots: adminPilotsRoute,
 });

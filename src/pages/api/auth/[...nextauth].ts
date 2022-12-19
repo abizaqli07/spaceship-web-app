@@ -42,7 +42,7 @@ export const authOptions: NextAuthOptions = {
           }
         }
 
-        return user as any
+        return user
       }
     })
   ],
@@ -51,12 +51,26 @@ export const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async session({ session, token, user }) {
-      if (session.user) {
-        session.user.id = token.sub!;
+      if(session.user){
+        const userData = await prisma.user.findUnique({
+          where: {
+            email: session.user?.email!
+          }
+        })
+
+        session.user.id = userData?.id!
+        session.user.name = userData?.username!
+        session.user.role = userData?.role!
+
+        return session
       }
+
       return session;
     },
   },
+  jwt: {
+    secret: env.NEXTAUTH_SECRET
+  }
 };
 
 export default NextAuth(authOptions);

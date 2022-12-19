@@ -1,39 +1,39 @@
+import { GetServerSidePropsContext } from 'next/types';
+
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 import { trpc } from '../utils/trpc'
+import { getServerAuthSession } from '../server/common/get-server-auth-session';
+
 
 const Redirect = () => {
-  const { data: sessionData } = useSession()
   const router = useRouter()
-  const { data, error, mutate } = trpc.userRouter.getUser.useMutation({
-    onSuccess(data) {
-      if (data.userData?.role === "USER") {
-        router.push("/userdashboard")
-      } else if (data.userData?.role === "PILOT") {
-        router.push("/pilotdashboard")
-      } else if (data.userData?.role === "ADMIN") {
-        router.push("/admindashboard")
-      }
-    },
-  });
+  const session = trpc.auth.getSessionData.useQuery()
 
-  if (!sessionData) {
+  if(session.data?.session) {
+    if (session.data?.session.role === "USER") {
+      router.push("/userdashboard")
+    } else if (session.data?.session.role === "PILOT") {
+      router.push("/pilotdashboard")
+    } else if (session.data?.session.role === "ADMIN") {
+      router.push("/admindashboard")
+    }
+  }
+
+  if (session.data?.session === null || session.data?.session === undefined) {
     return (
       <div>
         <div>Unauthorize User</div>
         <div><Link href={"/"}>Go to Home</Link></div>
       </div>
     )
-  } else {
-    mutate({ email: sessionData?.user?.email! })
   }
 
   return (
     <div>
-      <div>Some error occured</div>
-      <div><Link href={"/"}>Go to Home</Link></div>
+      <div>redirecting...</div>
     </div>
   )
 }

@@ -29,6 +29,7 @@ model passenger {
   gender       GENDER
   no_tlp       String
   created_at   DateTime @default(now())
+  ticket       ticket[]
 }
 
 model pilots {
@@ -57,18 +58,19 @@ model spaceship {
 
 model planet {
   id_planet    String     @id @default(cuid())
+  name         String
   image        String?
   description  String
-  distance     BigInt
-  is_explored  Boolean
-  is_populated Boolean
+  distance     Int
+  is_explored  Boolean?   @default(false)
+  is_populated Boolean?   @default(false)
   created_at   DateTime   @default(now())
   schedule     schedule[]
 }
 
 model schedule {
   id_schedule String    @id @default(cuid())
-  price       BigInt
+  price       Decimal   @db.Money
   capacity    Int
   destination planet    @relation(fields: [planetId], references: [id_planet])
   planetId    String
@@ -78,6 +80,29 @@ model schedule {
   spaceshipId String
   time_depart DateTime
   time_land   DateTime
+  ticket      ticket[]
+}
+
+model ticket {
+  id_ticket         String             @id @default(cuid())
+  schedule          schedule           @relation(fields: [scheduleId], references: [id_schedule])
+  scheduleId        String
+  passenger         passenger          @relation(fields: [passengerId], references: [id_passenger])
+  passengerId       String
+  ticket_has_status ticket_has_status?
+}
+
+model ticket_has_status {
+  id_ticket_has_status String @id @default(cuid())
+  ticket               ticket @relation(fields: [ticketId], references: [id_ticket])
+  ticketId             String @unique
+  status               STATUS
+}
+
+enum STATUS {
+  ACTIVE
+  WAITING
+  CANCELLED
 }
 
 enum ROLE {

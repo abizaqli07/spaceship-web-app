@@ -1,5 +1,4 @@
 import { type GetServerSidePropsContext } from "next";
-import type { Session } from "next-auth/core/types";
 
 import Link from 'next/link'
 import React from 'react'
@@ -8,7 +7,7 @@ import { unstable_getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]";
 
 import { trpc } from "../../utils/trpc";
-import { hash } from "bcryptjs";
+import UserLayout from "../../components/user/UserLayout";
 
 type Props = {}
 
@@ -17,6 +16,7 @@ export async function getServerSideProps(ctx: {
   res: GetServerSidePropsContext["res"];
 }) {
   const session = await unstable_getServerSession(ctx.req, ctx.res, authOptions);
+
 
   if (!session) {
     return {
@@ -35,22 +35,16 @@ export async function getServerSideProps(ctx: {
 const User = (props: Props) => {
   const { data: sessionData } = useSession()
 
+  console.log(sessionData)
+
   return (
-    <div>
-      <div>UserDashboard</div>
-      <Link href={"/"}>To Home</Link>
-      <div>{sessionData?.user?.email}</div>
+    <UserLayout>
       <div>
-        {sessionData && (
-          <button
-            className="rounded-full bg-blue-600 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
-            onClick={() => signOut()}
-          >
-            Sign Out
-          </button>
-        )}
+        <div>UserDashboard</div>
+        <Link href={"/"}>To Home</Link>
+        <div>{sessionData?.user?.email}</div>
       </div>
-    </div>
+    </UserLayout>
   )
 }
 

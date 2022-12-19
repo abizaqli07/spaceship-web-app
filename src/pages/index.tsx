@@ -87,6 +87,10 @@ const AuthShowcase: React.FC = () => {
       >
         Sign Out
       </button>
+      <div
+        className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20 cursor-pointer"
+        onClick={() => router.push("/redirect")}
+      >Go to Dashboard</div>
     </div>
   );
 };

@@ -1,19 +1,15 @@
-import React from 'react'
-import Layout from '../components/SignUp/layout'
 import Head from 'next/head'
 import Link from 'next/link'
-import Image from 'next/image'
-import { prisma } from '../server/db/client'
+import Layout from '../components/SignUp/layout'
 
-import { useState } from 'react';
-import { useFormik, FormikProps } from 'formik'
-import { FormRegisterInterface, registerValidate } from '../utils/validateSignUp' 
+import { FormikProps, useFormik } from 'formik'
+import { useState } from 'react'
 import { trpc } from '../utils/trpc'
+import { FormRegisterInterface, registerValidate } from '../utils/validateSignUp'
 
-import { HiAtSymbol, HiFingerPrint, HiOutlineUser } from "react-icons/hi";
+import { HiAtSymbol, HiFingerPrint, HiOutlineUser } from "react-icons/hi"
 
-import { useRouter } from 'next/router';
-import { hash } from 'bcryptjs'
+import { useRouter } from 'next/router'
 
 type Props = {}
 

@@ -53,6 +53,27 @@ async function main() {
     }
   })
 
+  const spaceship = await prisma.spaceship.createMany({
+    data: [
+      {
+        name: "Interstellar",
+        description: "Spaceship from Space - X",
+        model: "X"
+      },
+      {
+        name: "Apollo Star",
+        description: "Spaceship to explore sun",
+        model: "Y"
+      },
+      {
+        name: "Helios",
+        description: "Spaceship to explore star",
+        model: "M"
+      },
+    ]
+    
+  })
+
 }
 
 main()
