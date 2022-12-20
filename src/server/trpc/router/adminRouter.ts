@@ -4,6 +4,7 @@ import { adminPilotsRoute } from "./adminRoute/pilots";
 import { adminPlanetRoute } from "./adminRoute/planet";
 import { adminScheduleRoute } from "./adminRoute/schedule";
 import { adminSpaceshipRoute } from "./adminRoute/spaceship";
+import { adminTicketRoute } from "./adminRoute/ticket";
 
 export const adminRouter = router({
   getUser: protectedProcedure
@@ -61,4 +62,5 @@ export const adminRouter = router({
   schedule: adminScheduleRoute,
   passenger: adminPassengerRoute,
   pilots: adminPilotsRoute,
+  ticket: adminTicketRoute
 });

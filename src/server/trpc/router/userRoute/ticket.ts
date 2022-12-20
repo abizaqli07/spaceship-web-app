@@ -48,7 +48,11 @@ export const userTicketRoute = router({
         include: {
           passenger: {
             include: {
-              ticket: true
+              ticket: {
+                include: {
+                  ticket_has_status: true
+                }
+              }
             }
           }
         }
@@ -56,6 +60,101 @@ export const userTicketRoute = router({
 
       return {
         userProfile
+      }
+    }),
+  getDetailTicket: protectedProcedure
+    .query(async ({ ctx }) => {
+
+      const ticket = await ctx.prisma.user.findUnique({
+        where: {
+          email: ctx.session.user.email!
+        },
+        include: {
+          passenger: {
+            include: {
+              ticket: {
+                include: {
+                  schedule: {
+                    include: {
+                      destination: true,
+                      spaceship: true
+                    }
+                  },
+                  ticket_has_status: true
+                },
+                orderBy: {
+                  ticket_has_status: {
+                    status: "asc"
+                  }
+                }
+              }
+            }
+          }
+        }
+      })
+
+      return {
+        ticket: ticket?.passenger?.ticket
+      }
+    }),
+  cancelBuyTicket: protectedProcedure
+    .input(z.object({
+      id_ticket: z.string().cuid()
+    }))
+    .mutation(async ({ input, ctx }) => {
+
+      try {
+        const cancel = await ctx.prisma.ticket.update({
+          where: {
+            id_ticket: input.id_ticket
+          },
+          data: {
+            ticket_has_status: {
+              update: {
+                status: "WAITING"
+              }
+            }
+          }
+        })
+      } catch (e) {
+        return {
+          success: false,
+          message: "Some error occured",
+          error: e
+        }
+      }
+
+      return {
+        success: true,
+        message: "Ticket Cancellation Submitted",
+        error: null
+      }
+
+    }),
+  deleteTicket: protectedProcedure
+    .input(z.object({ id: z.string().cuid() }))
+    .mutation(async ({ input, ctx }) => {
+      try {
+        const del = await ctx.prisma.ticket.delete({
+          where: {
+            id_ticket: input.id
+          },
+          include: {
+            ticket_has_status: true
+          }
+        })
+      } catch (e) {
+        return {
+          success: false,
+          message: "Some error occured",
+          error: e
+        }
+      }
+
+      return {
+        success: true,
+        message: "Ticket Data Deleted",
+        error: null
       }
     }),
 })

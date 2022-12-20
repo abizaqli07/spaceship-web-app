@@ -46,9 +46,10 @@ const UserLayout = ({ children }: PropsWithChildren) => {
             <div><Link href="/userdashboard">Dashboard</Link></div>
             <div><Link href="/userdashboard/profile">Profile</Link></div>
             <div><Link href="/userdashboard/schedule">Schedule</Link></div>
+            <div><Link href="/userdashboard/tickets">Tickets</Link></div>
           </div>
           <div>
-            <div className=' base__button bg-red-500 hover:bg-red-700' onClick={() => signOut().finally(() => router.push("/"))}>Sign Out</div>
+            <div className=' base__button bg-red-500 hover:bg-red-700' onClick={() => signOut({ callbackUrl: "/" })}>Sign Out</div>
           </div>
         </div>
         <div className='w-full p-8'>

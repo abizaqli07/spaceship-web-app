@@ -1,4 +1,4 @@
-import { schedule, spaceship, planet, pilots, passenger, ticket } from '@prisma/client'
+import { schedule, spaceship, planet, pilots, passenger, ticket, ticket_has_status } from '@prisma/client'
 
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
@@ -11,7 +11,9 @@ type Props = {
     pilot: pilots;
   },
   passenger: (passenger & {
-    ticket: ticket[];
+    ticket: (ticket & {
+      ticket_has_status: ticket_has_status | null;
+    })[];
   })
 }
 
@@ -49,7 +51,7 @@ const UserScheduleDetail = (props: Props) => {
     })
   }
 
-  const haveTicket = props.passenger.ticket.filter((fil) => { return fil.scheduleId === props.data.id_schedule }).length
+  const haveTicket = props.passenger.ticket.filter((fil) => { return (fil.scheduleId === props.data.id_schedule) && (fil.ticket_has_status?.status === "ACTIVE") }).length
 
   const spaceship = props.data.spaceship;
   const planet = props.data.destination;

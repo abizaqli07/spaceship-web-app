@@ -94,7 +94,7 @@ model ticket {
 
 model ticket_has_status {
   id_ticket_has_status String @id @default(cuid())
-  ticket               ticket @relation(fields: [ticketId], references: [id_ticket])
+  ticket               ticket @relation(fields: [ticketId], references: [id_ticket], onDelete: Cascade)
   ticketId             String @unique
   status               STATUS
 }

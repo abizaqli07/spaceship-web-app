@@ -3,7 +3,7 @@ import { GetServerSidePropsContext } from 'next/types';
 import { useRouter } from 'next/router';
 
 import AdminLayout from '../../../../components/admin/AdminLayout';
-import PlanetUpdate from '../../../../components/admin/planet/PlanetUpdate';
+import PassengerTicketList from '../../../../components/admin/passenger/PassengerTicketList';
 import { getServerAuthSession } from '../../../../server/common/get-server-auth-session';
 import { trpc } from '../../../../utils/trpc';
 
@@ -73,27 +73,7 @@ const PlanetDetails = (props: Props) => {
           <div>Member since : {d.created_at.toJSON()}</div>
         </div>
 
-
-        <div className='flex flex-col gap-4 bg-gray-700 rounded-xl p-3'>
-          <div className=' text-xl'>Active Ticket</div>
-          <div className=' flex flex-col gap-4'>
-            {d.ticket.length === 0  && (
-              <div>No ticket active</div>
-            )}
-            {d.ticket && d.ticket.filter((prev) => prev.ticket_has_status?.status === "ACTIVE").map((data) => {
-              return (
-                <div className=' bg-gray-800 flex flex-col p-3 rounded-xl'>
-                  <div>Id Ticket : {data.id_ticket}</div>
-                  <div>Destination :{data.schedule.destination.name}</div>
-                  <div>Spaceship : {data.schedule.spaceship.name}</div>
-                  <div>Time Depart : {data.schedule.time_depart.toJSON()}</div>
-                  <div>Time Landing : {data.schedule.time_land.toJSON()}</div>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-
+        <PassengerTicketList data={detail.data.passenger.ticket} />
 
       </div>
     </AdminLayout>

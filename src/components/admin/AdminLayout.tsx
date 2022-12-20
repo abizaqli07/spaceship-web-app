@@ -50,7 +50,7 @@ const AdminLayout = ({ children }: PropsWithChildren) => {
             <div><Link href="/admindashboard/pilots">Pilots</Link></div>
           </div>
           <div>
-            <div className=' base__button bg-red-500 hover:bg-red-700' onClick={() => signOut().finally(() => router.push("/"))}>Sign Out</div>
+            <div className=' base__button bg-red-500 hover:bg-red-700' onClick={() => signOut({ callbackUrl: "/" })}>Sign Out</div>
           </div>
         </div>
         <div className='w-full p-8'>
