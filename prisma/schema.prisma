@@ -37,7 +37,7 @@ model pilots {
   user        User?      @relation(fields: [userId], references: [id])
   name        String
   image       String?
-  datebirth   DateTime
+  datebirth   String
   gender      GENDER
   no_tlp      String
   legal       String?

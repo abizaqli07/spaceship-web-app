@@ -1,10 +1,13 @@
 import React from 'react'
+import PilotLayout from '../../components/pilot/PilotDashboardLayout'
 
 type Props = {}
 
 const Pilot = (props: Props) => {
   return (
-    <div>PilotDashboard</div>
+    <PilotLayout>
+      Pilot dashboard
+    </PilotLayout>
   )
 }
 
