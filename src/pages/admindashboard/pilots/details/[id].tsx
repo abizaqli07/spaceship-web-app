@@ -68,7 +68,7 @@ const PlanetDetails = (props: Props) => {
 
         <div className='flex flex-col gap-4 bg-gray-700 rounded-xl p-3'>
           <div>Gender : {d.gender}</div>
-          <div>Datebirth : {d.datebirth.toJSON().split("T")[0]}</div>
+          <div>Datebirth : {d.datebirth.split("T")[0]}</div>
           <div>No. Tlp : {d.no_tlp}</div>
           <div>Member since : {d.is_verified ? "Verificated Pilot" : "Unverificated Pilot"}</div>
         </div>

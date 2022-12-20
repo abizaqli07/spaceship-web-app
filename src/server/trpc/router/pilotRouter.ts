@@ -2,6 +2,7 @@ import { z } from "zod";
 
 import { router, protectedProcedure } from "../trpc";
 import { pilotProfileRoute } from "./pilotRoute/profile";
+import { pilotScheduleRoute } from "./pilotRoute/schedule";
 
 export const pilotRouter = router({
   getUser: protectedProcedure
@@ -18,5 +19,6 @@ export const pilotRouter = router({
         userData: user
       };
     }),
-    profile: pilotProfileRoute
+    profile: pilotProfileRoute,
+    schedule: pilotScheduleRoute,
 });

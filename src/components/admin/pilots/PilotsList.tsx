@@ -21,7 +21,7 @@ const PilotsList = (props: Props) => {
                 <div>Nama : {data.name}</div>
                 <div>Gender : {data.gender}</div>
                 <div>No. Tlp : {data.no_tlp}</div>
-                <div>Datebirth : {`${data.datebirth.toJSON().split("T")[0]}`}</div>
+                <div>Datebirth : {`${data.datebirth.split("T")[0]}`}</div>
                 <div>Verification : {data.is_verified ? "Verificated Pilot" : "Unverificated Pilot"}</div>
                 <div className=' flex gap-4'>
                   <Link

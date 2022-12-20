@@ -140,7 +140,7 @@ const SignUpPilot = (props: Props) => {
           <div className='input__wrapper'>
             <label> Datebirth :</label>
             <div className='input__group'>
-              <input className='input__text border' type="datetime-local" id="time_land" {...formik.getFieldProps('datebirth')} />
+              <input className='input__text border'  type="datetime-local" id="time_land" {...formik.getFieldProps('datebirth')} />
             </div>
           </div>
           <div className='input__wrapper'>

@@ -2,6 +2,7 @@ import { User, pilots } from '@prisma/client'
 import { FormikProps, useFormik } from 'formik'
 import { useState } from 'react'
 import { trpc } from '../../../utils/trpc'
+import { useRouter } from 'next/router'
 
 interface callbackData {
   visible: boolean
@@ -29,6 +30,8 @@ type Props = {
 const PilotProfileUpdate = (props: Props) => {
   const [enableEdit, setEnableEdit] = useState<boolean>(true)
   const [callback, setCallback] = useState<callbackData>({ visible: false, data: null })
+
+  const router = useRouter()
 
   const editPlanet = trpc.pilotRouter.profile.updatePilotProfile.useMutation({
     onSuccess(data) {
@@ -58,7 +61,7 @@ const PilotProfileUpdate = (props: Props) => {
           <div>{callback.data?.message}</div>
           <div>{callback.data?.error ? callback.data.error : ""}</div>
           <div className=' flex gap-3'>
-            <div className='base__button bg-gray-500 hover:bg-gray-700 w-fit' onClick={() => setCallback({ visible: false, data: null })}>Close</div>
+            <div className='base__button bg-gray-500 hover:bg-gray-700 w-fit' onClick={() => { setCallback({ visible: false, data: null }); router.reload() }}>Close</div>
           </div>
         </div>
       )}
