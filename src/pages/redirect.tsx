@@ -32,7 +32,7 @@ const Redirect = () => {
   }
 
   return (
-    <div>
+    <div className='text-white bg-secondaryDark'>
       <div>redirecting...</div>
     </div>
   )

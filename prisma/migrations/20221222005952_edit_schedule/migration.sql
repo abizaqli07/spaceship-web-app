@@ -1,0 +1,6 @@
+-- AlterTable
+ALTER TABLE "blog" ADD COLUMN     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP;
+
+-- AlterTable
+ALTER TABLE "schedule" ALTER COLUMN "time_depart" SET DATA TYPE TEXT,
+ALTER COLUMN "time_land" SET DATA TYPE TEXT;

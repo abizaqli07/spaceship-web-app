@@ -49,7 +49,7 @@ const SpaceshipUpdate = (props: Props) => {
   return (
     <div>
       {callback.visible && (
-        <div className=' p-4 bg-gray-600 flex flex-col gap-4'>
+        <div className=' popup'>
           <div>{callback.data?.message}</div>
           <div>{callback.data?.error ? callback.data.error : ""}</div>
           <div className=' flex gap-3'>
@@ -59,8 +59,8 @@ const SpaceshipUpdate = (props: Props) => {
       )}
 
       <div className=' flex flex-col gap-8'>
-        <div className='w-full rounded-xl bg-gray-600 p-3'>
-          <div className='base__button bg-lime-500 hover:bg-lime-700' onClick={() => setEnableEdit(false)}>Update</div>
+        <div className='w-full rounded-xl bg-secondaryDark p-3'>
+          <div className='button__confirm' onClick={() => setEnableEdit(false)}>Update</div>
         </div>
         <form className="flex flex-col gap-4" onSubmit={formik.handleSubmit}>
           <div className='input__wrapper'>
@@ -120,6 +120,7 @@ const SpaceshipUpdate = (props: Props) => {
             <input
               type="checkbox"
               id="is_explored"
+              className='input__check'
               disabled={enableEdit}
               {...formik.getFieldProps('is_explored')}
               checked={formik.values.is_explored!}
@@ -130,13 +131,14 @@ const SpaceshipUpdate = (props: Props) => {
             <input
               type="checkbox"
               id="is_populated"
+              className='input__check'
               disabled={enableEdit}
               {...formik.getFieldProps('is_populated')}
               checked={formik.values.is_populated!}
             />
           </div>
           <div >
-            <input className=" base__button bg-lime-500 hover:bg-lime-700" type="submit" value="Submit" />
+            <input className=" button__confirm" type="submit" value="Submit" />
           </div>
         </form>
       </div>

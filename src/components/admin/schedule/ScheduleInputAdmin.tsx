@@ -51,7 +51,7 @@ const ScheduleInputAdmin = (props: Props) => {
   return (
     <div>
       {callback.visible && (
-        <div className=' p-4 bg-gray-600 flex flex-col gap-4'>
+        <div className='popup'>
           <div>{callback.data?.message}</div>
           <div>{callback.data?.error ? "Error Occured" : ""}</div>
           <div className=' flex gap-3'>
@@ -142,16 +142,16 @@ const ScheduleInputAdmin = (props: Props) => {
 
           <div className='input__wrapper'>
             <label> Time Departure :</label>
-            <input className='input__field' type="datetime-local" id="time_depart" {...formik.getFieldProps('time_depart')}/>
+            <input className='input__date' type="datetime-local" id="time_depart" {...formik.getFieldProps('time_depart')}/>
           </div>
 
           <div className='input__wrapper'>
             <label> Time Landing :</label>
-            <input className='input__field' type="datetime-local" id="time_land" {...formik.getFieldProps('time_land')}/>
+            <input className='input__date' min={formik.values.time_depart} type="datetime-local" id="time_land" {...formik.getFieldProps('time_land')}/>
           </div>
 
           <div >
-            <input className=" base__button bg-lime-500 hover:bg-lime-700" type="submit" value="Input" />
+            <input className=" button__confirm" type="submit" value="Input" />
           </div>
         </form>
       </div>

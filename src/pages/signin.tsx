@@ -54,8 +54,8 @@ const Signin = (props: Props) => {
       {/* Title */}
       <section className=' w-3/4 mx-auto flex flex-col gap-10'>
         <div className="title">
-          <h1 className='text-gray-800 text-2xl font-bold py-4'>Explore</h1>
-          <p className='w-3/4 mx-auto text-gray-400 text-xs'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, officia?</p>
+          <h1 className='text-3xl font-bold py-4 text-gray-200'>Explore</h1>
+          <p className='w-3/4 mx-auto text-gray-400 text-xs'>Login and explore more with us</p>
         </div>
 
         {/* Form Login */}

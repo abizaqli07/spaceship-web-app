@@ -77,7 +77,7 @@ const Home: NextPage = () => {
                 <a className="inline-block text-white no-underline hover:text-primaryLight hover:text-underline py-2 px-4" href="#">News</a>
               </li>
             </ul>
-            <AuthUi/>
+            <AuthUi />
           </div>
         </div>
       </nav>
@@ -134,11 +134,10 @@ const Home: NextPage = () => {
           <div className="flex flex-wrap mt-16 items-center">
             <div className="w-5/6 sm:w-1/2 p-6">
               <h3 className="text-2xl font-bold leading-none mb-3">
-                Lorem ipsum dolor sit amet
+                The best rocket company
               </h3>
               <p className=" mb-8">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.
-              </p>
+                Apolo star can bring you everywhere you want in this planet or other planet in this universe so don't worry about your trip              </p>
             </div>
             <div className="w-full sm:w-1/2 p-6">
               <AboutSvg />
@@ -152,10 +151,10 @@ const Home: NextPage = () => {
             <div className="w-full sm:w-1/2 p-6 mt-6">
               <div className="align-middle">
                 <h3 className="text-2xl font-bold leading-none mb-3">
-                  Lorem ipsum dolor sit amet
+                  Make it imposible to posible
                 </h3>
                 <p className=" mb-8">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.
+                  Apolo star can take you in every places that are impossible to visit , so go anywhere is not limited by place and time
                 </p>
               </div>
             </div>

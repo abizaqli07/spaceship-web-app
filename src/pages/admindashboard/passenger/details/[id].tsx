@@ -44,7 +44,7 @@ const PlanetDetails = (props: Props) => {
   if (detail.isError) {
     return (
       <AdminLayout>
-        <div className=' p-4 bg-gray-600 flex flex-col gap-4'>
+        <div className=' p-4 bg-secondaryDark flex flex-col gap-4'>
           <div>{detail.error.data?.code}</div>
           <div>{detail.error.message}</div>
         </div>
@@ -56,17 +56,17 @@ const PlanetDetails = (props: Props) => {
 
   return (
     <AdminLayout>
-      <div className='w-full rounded-xl bg-gray-600 p-3 flex flex-col gap-8'>
-        <div className='flex flex-col gap-4 bg-gray-700 rounded-xl p-3'>
+      <div className='w-full rounded-xl bg-secondaryDark p-3 flex flex-col gap-8'>
+        <div className='flex flex-col gap-4 bg-ternaryDark rounded-xl p-3'>
           <div>Fullname : {d.fullname}</div>
         </div>
 
-        <div className='flex flex-col gap-4 bg-gray-700 rounded-xl p-3'>
+        <div className='flex flex-col gap-4 bg-ternaryDark rounded-xl p-3'>
           <div>Username : {d.user?.username}</div>
           <div>Email : {d.user?.email}</div>
         </div>
 
-        <div className='flex flex-col gap-4 bg-gray-700 rounded-xl p-3'>
+        <div className='flex flex-col gap-4 bg-ternaryDark rounded-xl p-3'>
           <div>Gender : {d.gender}</div>
           <div>Datebirth : {d.datebirth.split("T")[0]}</div>
           <div>No. Tlp : {d.no_tlp}</div>

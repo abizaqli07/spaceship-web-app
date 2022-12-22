@@ -75,27 +75,18 @@ const PilotSchedule = (props: Props) => {
   return (
     <PilotLayout>
 
-      <div className=' flex flex-col gap-8'>
+      <div className=' list__wrapper'>
 
-
-
-        <div className='flex flex-col gap-8'>
           {
             schedule?.map((data) => {
               return (
-                <div key={data.id_schedule} className=" bg-gray-600 p-6 rounded-lg flex flex-col gap-4">
+                <div key={data.id_schedule} className=" bg-secondaryDark p-6 rounded-lg flex flex-col gap-4">
                   <div>Destination : {data.destination.name}</div>
                   <div>Price : {data.price.toString()}</div>
                   <div>Capacity : {data.capacity.toString()}</div>
                   <div className=' flex flex-col gap-4'>
-                    <div>Time Departure : {data.time_depart.toDateString()}</div>
-                    <div>Time Landing : {data.time_land.toDateString()}</div>
-                  </div>
-                  <div className=' flex gap-4'>
-                    <Link
-                      href={`${router.pathname}/details/${data.id_schedule}`}
-                      className="base__button bg-lime-500 hover:bg-lime-700"
-                    >Details</Link>
+                    <div>Time Departure : {data.time_depart}</div>
+                    <div>Time Landing : {data.time_land}</div>
                   </div>
                 </div>
               )
@@ -103,8 +94,6 @@ const PilotSchedule = (props: Props) => {
           }
         </div>
 
-
-      </div>
     </PilotLayout>
   )
 }

@@ -72,22 +72,22 @@ model schedule {
   id_schedule String    @id @default(cuid())
   price       Decimal   @db.Money
   capacity    Int
-  destination planet    @relation(fields: [planetId], references: [id_planet])
+  destination planet    @relation(fields: [planetId], references: [id_planet], onDelete: Cascade)
   planetId    String
-  pilot       pilots    @relation(fields: [pilotsId], references: [id_pilot])
+  pilot       pilots    @relation(fields: [pilotsId], references: [id_pilot], onDelete: Cascade)
   pilotsId    String
-  spaceship   spaceship @relation(fields: [spaceshipId], references: [id_spaceship])
+  spaceship   spaceship @relation(fields: [spaceshipId], references: [id_spaceship], onDelete: Cascade)
   spaceshipId String
-  time_depart DateTime
-  time_land   DateTime
+  time_depart String
+  time_land   String
   ticket      ticket[]
 }
 
 model ticket {
   id_ticket         String             @id @default(cuid())
-  schedule          schedule           @relation(fields: [scheduleId], references: [id_schedule])
+  schedule          schedule           @relation(fields: [scheduleId], references: [id_schedule], onDelete: Cascade)
   scheduleId        String
-  passenger         passenger          @relation(fields: [passengerId], references: [id_passenger])
+  passenger         passenger          @relation(fields: [passengerId], references: [id_passenger], onDelete: Cascade)
   passengerId       String
   ticket_has_status ticket_has_status?
 }
@@ -97,6 +97,15 @@ model ticket_has_status {
   ticket               ticket @relation(fields: [ticketId], references: [id_ticket], onDelete: Cascade)
   ticketId             String @unique
   status               STATUS
+}
+
+model blog {
+  id_blog     String   @id @default(cuid())
+  title       String
+  description String
+  link        String
+  image       String
+  created_at  DateTime @default(now())
 }
 
 enum STATUS {

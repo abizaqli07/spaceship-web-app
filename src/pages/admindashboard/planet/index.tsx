@@ -43,9 +43,9 @@ const Spaceship = (props: Props) => {
     return (
       <AdminLayout>
         <div className=' flex flex-col gap-8'>
-          <div className=' w-full bg-gray-600 flex flex-col gap-4 p-6 rounded-xl'>
+          <div className=' w-full bg-secondaryDark flex flex-col gap-4 p-6 rounded-xl'>
             <div>Input New Spaceship :</div>
-            <div className=' base__button bg-lime-500 hover:bg-lime-700 font-medium' onClick={() => router.push(`${router.pathname}/inputplanet`)}>Input</div>
+            <div className=' button__confirm' onClick={() => router.push(`${router.pathname}/inputplanet`)}>Input</div>
           </div>
           <div>
             error occured
@@ -59,9 +59,9 @@ const Spaceship = (props: Props) => {
     <AdminLayout>
 
       <div className=' flex flex-col gap-8'>
-        <div className=' w-full bg-gray-600 flex flex-col gap-4 p-6 rounded-xl'>
+        <div className=' w-full bg-secondaryDark flex flex-col gap-4 p-6 rounded-xl'>
           <div>Input New Spaceship :</div>
-          <div className=' base__button bg-lime-500 hover:bg-lime-700 font-medium' onClick={() => router.push(`${router.pathname}/inputplanet`)}>Input</div>
+          <div className=' button__confirm' onClick={() => router.push(`${router.pathname}/inputplanet`)}>Input</div>
         </div>
 
         <PlanetList data={planet?.data?.planet!} />

@@ -53,9 +53,9 @@ const Spaceship = (props: Props) => {
     <AdminLayout>
 
       <div className=' flex flex-col gap-8'>
-        <div className=' w-full bg-gray-600 flex flex-col gap-4 p-6 rounded-xl'>
+        <div className=' w-full bg-secondaryDark flex flex-col gap-4 p-6 rounded-xl'>
           <div>Input New Spaceship :</div>
-          <div className=' base__button bg-lime-500 hover:bg-lime-700 font-medium' onClick={() => router.push(`${router.pathname}/inputspaceship`)}>Input</div>
+          <div className='button__confirm font-medium' onClick={() => router.push(`${router.pathname}/inputspaceship`)}>Input</div>
         </div>
 
         <SpaceshipList data={spaceship?.data?.spaceship!} />

@@ -63,8 +63,8 @@ inputSchedule: protectedProcedure
           planetId: input.planetId,
           pilotsId: input.pilotsId,
           spaceshipId: input.spaceshipId,
-          time_depart: new Date(input.time_depart),
-          time_land: new Date(input.time_land)
+          time_depart: input.time_depart,
+          time_land: input.time_land
         }
       })
     } catch (e) {
@@ -104,8 +104,8 @@ updateSchedule: protectedProcedure
           planetId: input.planetId,
           pilotsId: input.pilotsId,
           spaceshipId: input.spaceshipId,
-          time_depart: new Date(input.time_depart),
-          time_land: new Date(input.time_land)
+          time_depart: input.time_depart,
+          time_land: input.time_land
         }
       })
     } catch (e) {

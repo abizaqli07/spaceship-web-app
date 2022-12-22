@@ -1,19 +1,16 @@
 import Link from 'next/dist/client/link';
 import { useEffect, useState } from 'react';
 
-import { useSession, signOut } from "next-auth/react"
-import type { PropsWithChildren } from 'react';
+import { signOut } from "next-auth/react";
 import { useRouter } from 'next/router';
+import type { PropsWithChildren } from 'react';
 
-import { SiShopware } from 'react-icons/si';
-import { MdOutlineCancel } from 'react-icons/md';
-import { MdOutlineDashboard } from 'react-icons/md';
-import { FaSpaceShuttle, FaUserSecret } from 'react-icons/fa';
-import { BiPlanet, BiSearch } from 'react-icons/bi';
-import { GrSchedule } from 'react-icons/gr';
-import { FiUsers } from 'react-icons/fi';
-import { FaUserAstronaut, FaUserAlt } from 'react-icons/fa';
 import { AiFillSchedule, AiFillSetting } from 'react-icons/ai';
+import { BiPlanet, BiSearch } from 'react-icons/bi';
+import { FaSpaceShuttle, FaUserAlt, FaUserAstronaut, FaUserSecret } from 'react-icons/fa';
+import { FiUsers } from 'react-icons/fi';
+import { MdOutlineDashboard } from 'react-icons/md';
+import { HiNewspaper } from 'react-icons/hi';
 
 
 const AdminLayout = ({ children }: PropsWithChildren) => {
@@ -107,6 +104,14 @@ const AdminLayout = ({ children }: PropsWithChildren) => {
                     <AiFillSchedule />
                     <span className="capitalize ">Schedule</span>
                   </Link>
+                  <Link
+                    href={`/admindashboard/blog`}
+                    onClick={handleCloseSideBar}
+                    className={`${normalLink}`}
+                  >
+                    <HiNewspaper />
+                    <span className="capitalize ">Blog's</span>
+                  </Link>
                 </div>
 
                 <div>
@@ -140,16 +145,16 @@ const AdminLayout = ({ children }: PropsWithChildren) => {
 
 
       {/* ===================  Navbar ================== */}
-      <div className='lg:ml-72 relative h-full max-h-screen rounded-xl'>
+      <div className='lg:ml-72 relative h-full max-h-screen rounded-xl bg-secondaryDark text-shade'>
         <nav className="relative flex flex-wrap items-center justify-between px-0 py-2 mx-6 transition-all shadow-none duration-250 ease-soft-in rounded-2xl lg:flex-nowrap lg:justify-start">
           <div className="flex md:items-center justify-between w-full px-4 py-1 mx-auto flex-col gap-y-4 md:flex-row">
             <nav>
               {/* <!-- breadcrumb --> */}
               <ol className="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
                 <li className="leading-normal text-sm">
-                  <a className="opacity-50 text-slate-700" href="javascript:;">Pages</a>
+                  <a className="opacity-50 text-shade">Pages</a>
                 </li>
-                <li className="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Dashboard</li>
+                <li className="text-sm pl-2 capitalize leading-normal text-shade before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Dashboard</li>
               </ol>
               <h6 className="mb-0 font-bold capitalize">Dashboard</h6>
             </nav>
@@ -167,7 +172,7 @@ const AdminLayout = ({ children }: PropsWithChildren) => {
               <ul className="flex flex-row justify-end pl-0 mb-0 list-none md-max:w-full">
                 <li className="flex items-center">
                   <div
-                    className="flex items-center gap-2 px-0 py-2 font-semibold transition-all ease-nav-brand text-sm text-slate-500 cursor-pointer"
+                    className="flex items-center gap-2 px-0 py-2 font-semibold transition-all ease-nav-brand text-sm text-slate-500 cursor-pointer hover:text-primary"
                     onClick={() => signOut({ callbackUrl: "/" })}
                   >
                     <FaUserAlt />
@@ -175,7 +180,7 @@ const AdminLayout = ({ children }: PropsWithChildren) => {
                   </div>
                 </li>
                 <li className="flex items-center pl-4 lg:hidden cursor-pointer">
-                  <a className="block p-0 transition-all ease-in-out text-sm text-slate-500" onClick={() => setActiveMenu(!activeMenu)}>
+                  <a className="block p-0 transition-all ease-in-out text-sm text-slate-500 hover:text-primary" onClick={() => setActiveMenu(!activeMenu)}>
                     <div className="w-[20px] overflow-hidden">
                       <i className="ease-in-out mb-[3px] relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
                       <i className="ease-in-out mb-[3px] relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
@@ -196,7 +201,7 @@ const AdminLayout = ({ children }: PropsWithChildren) => {
         {/* ================================== End Navbar ============================ */}
 
         {/* ================================== Content ============================ */}
-        <div className='w-full px-6 py-6 mx-auto'>
+        <div className='w-full min-h-screen px-6 py-6 mx-auto gradient text-shade'>
           {children}
         </div>
       </div>

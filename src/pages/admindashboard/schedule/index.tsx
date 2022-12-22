@@ -43,9 +43,9 @@ const AdminSchedule = (props: Props) => {
     return (
       <AdminLayout>
         <div className=' flex flex-col gap-8'>
-          <div className=' w-full bg-gray-600 flex flex-col gap-4 p-6 rounded-xl'>
+          <div className=' w-full bg-secondaryDark flex flex-col gap-4 p-6 rounded-xl'>
             <div>Input New Schedule :</div>
-            <div className=' base__button bg-lime-500 hover:bg-lime-700 font-medium' onClick={() => router.push(`${router.pathname}/inputschedule`)}>Input</div>
+            <div className=' button__confirm' onClick={() => router.push(`${router.pathname}/inputschedule`)}>Input</div>
           </div>
           <div>
             No Data Found
@@ -59,9 +59,9 @@ const AdminSchedule = (props: Props) => {
     return (
       <AdminLayout>
         <div className=' flex flex-col gap-8'>
-          <div className=' w-full bg-gray-600 flex flex-col gap-4 p-6 rounded-xl'>
+          <div className=' w-full bg-secondaryDark flex flex-col gap-4 p-6 rounded-xl'>
             <div>Input New Schedule :</div>
-            <div className=' base__button bg-lime-500 hover:bg-lime-700 font-medium' onClick={() => router.push(`${router.pathname}/inputschedule`)}>Input</div>
+            <div className=' button__confirm' onClick={() => router.push(`${router.pathname}/inputschedule`)}>Input</div>
           </div>
           <div>
             error occured
@@ -75,9 +75,9 @@ const AdminSchedule = (props: Props) => {
     <AdminLayout>
 
       <div className=' flex flex-col gap-8'>
-        <div className=' w-full bg-gray-600 flex flex-col gap-4 p-6 rounded-xl'>
+        <div className=' w-full bg-secondaryDark flex flex-col gap-4 p-6 rounded-xl'>
           <div>Input New Schedule :</div>
-          <div className=' base__button bg-lime-500 hover:bg-lime-700 font-medium' onClick={() => router.push(`${router.pathname}/inputschedule`)}>Input</div>
+          <div className=' button__confirm' onClick={() => router.push(`${router.pathname}/inputschedule`)}>Input</div>
         </div>
 
         <ScheduleList data={schedule?.data?.schedule!} />

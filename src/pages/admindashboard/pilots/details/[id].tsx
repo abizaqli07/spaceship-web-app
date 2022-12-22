@@ -44,7 +44,7 @@ const PlanetDetails = (props: Props) => {
   if (detail.isError) {
     return (
       <AdminLayout>
-        <div className=' p-4 bg-gray-600 flex flex-col gap-4'>
+        <div className=' p-4 bg-secondaryDark flex flex-col gap-4'>
           <div>{detail.error.data?.code}</div>
           <div>{detail.error.message}</div>
         </div>
@@ -56,17 +56,17 @@ const PlanetDetails = (props: Props) => {
 
   return (
     <AdminLayout>
-      <div className='w-full rounded-xl bg-gray-600 p-3 flex flex-col gap-8'>
-        <div className='flex flex-col gap-4 bg-gray-700 rounded-xl p-3'>
+      <div className='w-full rounded-xl bg-secondaryDark p-3 flex flex-col gap-8'>
+        <div className='flex flex-col gap-4 bg-ternaryDark rounded-xl p-3'>
           <div>Fullname : {d.name}</div>
         </div>
 
-        <div className='flex flex-col gap-4 bg-gray-700 rounded-xl p-3'>
+        <div className='flex flex-col gap-4 bg-ternaryDark rounded-xl p-3'>
           <div>Username : {d.user?.username}</div>
           <div>Email : {d.user?.email}</div>
         </div>
 
-        <div className='flex flex-col gap-4 bg-gray-700 rounded-xl p-3'>
+        <div className='flex flex-col gap-4 bg-ternaryDark rounded-xl p-3'>
           <div>Gender : {d.gender}</div>
           <div>Datebirth : {d.datebirth.split("T")[0]}</div>
           <div>No. Tlp : {d.no_tlp}</div>
@@ -74,7 +74,7 @@ const PlanetDetails = (props: Props) => {
         </div>
 
 
-        <div className='flex flex-col gap-4 bg-gray-700 rounded-xl p-3'>
+        <div className='flex flex-col gap-4 bg-ternaryDark rounded-xl p-3'>
           <div className=' text-xl'>Active Schedule</div>
           <div className=' flex flex-col gap-4'>
             {d.schedule.length === 0  && (
@@ -82,12 +82,12 @@ const PlanetDetails = (props: Props) => {
             )}
             {d.schedule && d.schedule.map((data) => {
               return (
-                <div className=' bg-gray-800 flex flex-col p-3 rounded-xl gap-4'>
+                <div className=' bg-secondaryDark flex flex-col p-3 rounded-xl gap-4'>
                   <div>Id Ticket : {data.id_schedule}</div>
                   <div>Destination :{data.destination.name}</div>
                   <div>Spaceship : {data.spaceship.name}</div>
-                  <div>Time Depart : {data.time_depart.toJSON().split("T")[0]}</div>
-                  <div>Time Landing : {data.time_land.toJSON().split("T")[0]}</div>
+                  <div>Time Depart : {data.time_depart.split("T")[0]}</div>
+                  <div>Time Landing : {data.time_land.split("T")[0]}</div>
                 </div>
               )
             })}

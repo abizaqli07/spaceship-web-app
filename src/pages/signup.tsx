@@ -49,8 +49,8 @@ const SignUp = (props: Props) => {
 
       <section className='w-3/4 mx-auto flex flex-col gap-5'>
         <div className="title">
-          <h1 className='text-gray-800 text-4xl font-bold py-4'>Register</h1>
-          <p className='w-3/4 mx-auto text-gray-400'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, officia?</p>
+          <h1 className='text-gray-200 text-4xl font-bold py-4'>Register</h1>
+          <p className='w-3/4 mx-auto text-gray-400'>Register to become our member, and enjoy our facilities and services </p>
         </div>
 
         {/* form */}

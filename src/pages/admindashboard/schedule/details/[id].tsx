@@ -47,7 +47,7 @@ const ScheduleDetails = (props: Props) => {
   if (detail.isError) {
     return (
       <AdminLayout>
-        <div className=' p-4 bg-gray-600 flex flex-col gap-4'>
+        <div className=' p-4 bg-secondaryDark flex flex-col gap-4'>
           <div>{detail.error.data?.code}</div>
           <div>{detail.error.message}</div>
         </div>

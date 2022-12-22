@@ -41,13 +41,30 @@ a {
     @apply cursor-pointer p-3 rounded-lg transition-all duration-300 ease-in-out w-fit
   }
 
+  .input__container{
+    @apply bg-primaryHover flex flex-col text-shade gap-4 p-3 rounded-xl text-base font-medium
+  }
+
   .input__wrapper {
-    @apply flex flex-col gap-4
+    @apply flex flex-col gap-4 text-shade
+  }
+
+  .input__wrapper > label {
+    @apply text-base font-medium
   }
 
   .input__field {
-    @apply w-full p-2 border rounded-md bg-gray-500;
-    @apply focus:outline-none border-none;
+    @apply w-full p-3 border rounded-md bg-secondaryDark;
+    @apply focus:outline-none border-none disabled:bg-primaryHover disabled:text-white disabled:font-medium;
+  }
+
+  .input__check{
+    @apply p-3 bg-secondaryDark disabled:bg-primaryHover rounded-lg checked:bg-primaryLight
+  }
+
+  .input__date {
+    @apply p-3 border rounded-md bg-secondaryDark text-shade;
+    @apply focus:outline-none border-none disabled:bg-primaryHover disabled:text-white disabled:font-medium;
   }
 
   /* =============== Service Components =============== */
@@ -59,7 +76,7 @@ a {
 
   /* =============== Signup Components ================ */
   .input__group {
-    @apply flex border rounded-md;
+    @apply flex border rounded-md bg-primaryLight;
     position: relative;
   }
 
@@ -69,7 +86,7 @@ a {
   }
 
   .button {
-    @apply w-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-md;
+    @apply w-full bg-gradient-to-r from-primaryLight to-primary rounded-md;
     @apply py-2 text-gray-50 text-sm
   }
 
@@ -91,7 +108,7 @@ a {
   }
 
   .input__text:not([type=email])~span:hover * {
-    color: #6366f1;
+    color: #6e0069;
     cursor: pointer;
   }
 
@@ -112,5 +129,22 @@ a {
     -webkit-text-stroke: 0.05px #fff;
     transform: scale(1.1);
     color: #fff;
+  }
+
+  /* ================ Dashboard =========================== */
+  .list__wrapper{
+    @apply flex flex-col gap-8 lg:grid lg:grid-cols-2 lg:gap-6
+  }
+
+  .button__confirm{
+    @apply base__button bg-lime-500 hover:bg-lime-700 text-white
+  }
+
+  .button__danger {
+    @apply base__button bg-secondary hover:bg-secondaryHover text-white
+  }
+
+  .popup {
+    @apply p-12 rounded-xl bg-primaryDark flex flex-col gap-4 absolute top-20 left-[50%] -translate-x-[50%]
   }
 }

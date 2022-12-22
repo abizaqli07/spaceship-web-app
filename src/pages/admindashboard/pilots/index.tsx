@@ -55,7 +55,7 @@ const AdminPilots = (props: Props) => {
     <AdminLayout>
 
       <div className=' flex flex-col gap-8'>
-        <div className=' w-full bg-gray-600 flex flex-col gap-4 p-6 rounded-xl'>
+        <div className=' w-full bg-secondaryDark flex flex-col gap-4 p-6 rounded-xl'>
           <div className='text-xl'>Pilots List :</div>
         </div>
 

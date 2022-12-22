@@ -43,9 +43,9 @@ const UserTickets = (props: Props) => {
     return (
       <UserLayout>
         <div className=' flex flex-col gap-8'>
-          <div className=' w-full bg-gray-600 flex flex-col gap-4 p-6 rounded-xl'>
+          <div className=' w-full bg-secondaryDark flex flex-col gap-4 p-6 rounded-xl'>
             <div>Start your flight :</div>
-            <div className=' base__button bg-lime-500 hover:bg-lime-700 font-medium' onClick={() => router.push("/userdashboard/schedule")}>Buy Ticket</div>
+            <div className=' button__confirm font-medium' onClick={() => router.push("/userdashboard/schedule")}>Buy Ticket</div>
           </div>
           <div>
             You have no ticket yet.
@@ -59,9 +59,9 @@ const UserTickets = (props: Props) => {
     return (
       <UserLayout>
         <div className=' flex flex-col gap-8'>
-          <div className=' w-full bg-gray-600 flex flex-col gap-4 p-6 rounded-xl'>
+          <div className=' w-full bg-secondaryDark flex flex-col gap-4 p-6 rounded-xl'>
             <div>Start your flight :</div>
-            <div className=' base__button bg-lime-500 hover:bg-lime-700 font-medium' onClick={() => router.push("/userdashboard/schedule")}>Buy Ticket</div>
+            <div className=' button__confirm font-medium' onClick={() => router.push("/userdashboard/schedule")}>Buy Ticket</div>
           </div>
           <div>
             error occured
@@ -75,9 +75,9 @@ const UserTickets = (props: Props) => {
     <UserLayout>
 
       <div className=' flex flex-col gap-8'>
-        <div className=' w-full bg-gray-600 flex flex-col gap-4 p-6 rounded-xl'>
+        <div className=' w-full bg-secondaryDark flex flex-col gap-4 p-6 rounded-xl'>
           <div>Start your flight :</div>
-          <div className=' base__button bg-lime-500 hover:bg-lime-700 font-medium' onClick={() => router.push("/userdashboard/schedule")}>Buy Ticket</div>
+          <div className=' button__confirm font-medium' onClick={() => router.push("/userdashboard/schedule")}>Buy Ticket</div>
         </div>
 
         <UserTicketList data={tickets?.data?.ticket!} />

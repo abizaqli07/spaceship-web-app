@@ -57,7 +57,7 @@ const SscheduleUpdate = (props: Props) => {
   return (
     <div>
       {callback.visible && (
-        <div className=' p-4 bg-gray-600 flex flex-col gap-4'>
+        <div className=' popup'>
           <div>{callback.data?.message}</div>
           <div>{callback.data?.error ? "error occured" : ""}</div>
           <div className=' flex gap-3'>
@@ -67,8 +67,8 @@ const SscheduleUpdate = (props: Props) => {
       )}
 
       <div>
-        <div className='w-full rounded-xl bg-gray-600 p-3'>
-          <div className='base__button bg-lime-500 hover:bg-lime-700' onClick={() => setEnableEdit((prev) => { return !prev })}>Update</div>
+        <div className='w-full rounded-xl p-3 bg-secondaryDark mb-8'>
+          <div className='button__confirm' onClick={() => setEnableEdit((prev) => { return !prev })}>Update</div>
         </div>
 
         <form className="flex flex-col gap-4" onSubmit={formik.handleSubmit}>
@@ -150,28 +150,28 @@ const SscheduleUpdate = (props: Props) => {
           </div>
 
 
-          <div className='input__wrapper bg-gray-700 p-3 rounded-xl'>
+          <div className='input__container'>
             <label> Time Departure :</label>
-            <div>Date : {props.data.time_depart.toJSON().split("T")[0]}</div>
-            <div>Time : {props.data.time_depart.toJSON().split("T")[1]}</div>
+            <div>Date : {props.data.time_depart.split("T")[0]}</div>
+            <div>Time : {props.data.time_depart.split("T")[1]}</div>
             {!enableEdit && (
               <input className='input__field' type="datetime-local" id="time_depart" {...formik.getFieldProps('time_depart')} disabled={enableEdit} />
             )
             }
           </div>
 
-          <div className='input__wrapper bg-gray-700 p-3 rounded-xl'>
+          <div className='input__container'>
             <label> Time Landing :</label>
-            <div>Date : {props.data.time_land.toJSON().split("T")[0]}</div>
-            <div>Time : {props.data.time_land.toJSON().split("T")[1]}</div>
+            <div>Date : {props.data.time_land.split("T")[0]}</div>
+            <div>Time : {props.data.time_land.split("T")[1]}</div>
             {!enableEdit && (
-              <input className='input__field' type="datetime-local" id="time_land" {...formik.getFieldProps('time_land')} disabled={enableEdit} />
+              <input className='input__field' type="datetime-local" min={formik.values.time_depart} id="time_land" {...formik.getFieldProps('time_land')} disabled={enableEdit} />
             )}
           </div>
 
           {!enableEdit && (
             <div>
-              <input className=" base__button bg-lime-500 hover:bg-lime-700" type="submit" value="Input" />
+              <input className=" button__confirm" type="submit" value="Input" />
             </div>
           )}
         </form>

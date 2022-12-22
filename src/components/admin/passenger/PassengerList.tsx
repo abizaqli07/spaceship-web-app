@@ -13,11 +13,11 @@ const PassengerList = (props: Props) => {
 
   return (
     <div>
-      <div className='flex flex-col gap-8'>
+      <div className='list__wrapper'>
         {
           props.data.map((data) => {
             return (
-              <div key={data.id_passenger} className=" bg-gray-600 p-6 rounded-lg flex flex-col gap-4">
+              <div key={data.id_passenger} className=" bg-secondaryDark p-6 rounded-lg flex flex-col gap-4">
                 <div>Nama : {data.fullname}</div>
                 <div>Gender : {data.gender}</div>
                 <div>No. Tlp : {data.no_tlp}</div>
@@ -25,7 +25,7 @@ const PassengerList = (props: Props) => {
                 <div className=' flex gap-4'>
                   <Link
                     href={`${router.pathname}/details/${data.id_passenger}`}
-                    className="base__button bg-lime-500 hover:bg-lime-700"
+                    className="button__confirm"
                   >Details</Link>
                 </div>
               </div>

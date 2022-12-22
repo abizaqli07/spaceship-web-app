@@ -5,10 +5,13 @@ module.exports = {
     extend: {
       colors: {
         primary: "#680285",
+        secondary: "#DB00B6",
+        secondaryHover: "#F20089",
         primaryHover: "#340159",
         primaryDark: "#110016",
         primaryLight: "#ff00e0",
-        secondaryDark: "#000000",
+        secondaryDark: "#10002B",
+        ternaryDark: "#240046",
         shade: "#888888",
       },
       fontFamily: {
@@ -16,5 +19,7 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 };

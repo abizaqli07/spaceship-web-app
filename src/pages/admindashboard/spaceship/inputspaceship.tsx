@@ -129,8 +129,8 @@ const InputSpaceship = (props: Props) => {
             {formik.errors.description && formik.touched.description ? <span className='text-rose-500'>{formik.errors.description}</span> : <></>}
           </div>
 
-          <div >
-            <input className=" base__button bg-lime-500 hover:bg-lime-700" type="submit" value="Input" />
+          <div className='flex justify-between'>
+            <input className=" button__confirm" type="submit" value="Input" />
           </div>
         </form>
       </div>

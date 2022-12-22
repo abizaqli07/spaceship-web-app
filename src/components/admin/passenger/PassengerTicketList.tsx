@@ -12,8 +12,8 @@ type Props = {
     schedule: {
       spaceship: spaceship;
       destination: planet;
-      time_depart: Date;
-      time_land: Date;
+      time_depart: string;
+      time_land: string;
     };
     ticket_has_status: ticket_has_status | null;
   })[]
@@ -50,17 +50,17 @@ const PlanetDetails = (props: Props) => {
   return (
     <div className='flex flex-col gap-6'>
       {confirm.visible && (
-        <div className=' p-4 bg-gray-600 flex flex-col gap-4'>
+        <div className=' popup'>
           <div>Approve Cancellation ?</div>
           <div className=' flex gap-3'>
             <div className='base__button bg-gray-500 hover:bg-gray-700' onClick={() => setConfirm({ visible: false, id: "" })}>Cancel</div>
-            <div className='base__button bg-red-500 hover:bg-red-700' onClick={() => handleApprove()}>Confirm</div>
+            <div className='button__danger' onClick={() => handleApprove()}>Confirm</div>
           </div>
         </div>
       )}
 
       {callback.visible && (
-        <div className=' p-4 bg-gray-600 flex flex-col gap-4'>
+        <div className=' popup'>
           <div>{callback.data?.message}</div>
           <div>{callback.data?.error ? "Error Occured" : ""}</div>
           <div className=' flex gap-3'>
@@ -70,7 +70,7 @@ const PlanetDetails = (props: Props) => {
       )}
 
 
-      <div className='flex flex-col gap-4 bg-gray-700 rounded-xl p-3'>
+      <div className='flex flex-col gap-4 bg-primaryDark rounded-xl p-3'>
         <div className=' text-xl'>Active Tickets</div>
         <div className=' flex flex-col gap-4'>
           {props.data.length === 0 && (
@@ -78,19 +78,19 @@ const PlanetDetails = (props: Props) => {
           )}
           {props.data && props.data.filter((prev) => prev.ticket_has_status?.status === "ACTIVE").map((data) => {
             return (
-              <div className=' bg-gray-800 flex flex-col p-3 rounded-xl gap-4'>
+              <div className=' bg-ternaryDark flex flex-col p-3 rounded-xl gap-4'>
                 <div>Id Ticket : {data.id_ticket}</div>
                 <div>Destination :{data.schedule.destination.name}</div>
                 <div>Spaceship : {data.schedule.spaceship.name}</div>
-                <div>Time Depart : {data.schedule.time_depart.toJSON()}</div>
-                <div>Time Landing : {data.schedule.time_land.toJSON()}</div>
+                <div>Time Depart : {data.schedule.time_depart}</div>
+                <div>Time Landing : {data.schedule.time_land}</div>
               </div>
             )
           })}
         </div>
       </div>
 
-      <div className='flex flex-col gap-4 bg-gray-700 rounded-xl p-3'>
+      <div className='flex flex-col gap-4 bg-primaryDark rounded-xl p-3'>
         <div className=' text-xl'>Cancellation Request</div>
         <div className=' flex flex-col gap-4'>
           {props.data.length === 0 && (
@@ -98,20 +98,20 @@ const PlanetDetails = (props: Props) => {
           )}
           {props.data && props.data.filter((prev) => prev.ticket_has_status?.status === "WAITING").map((data) => {
             return (
-              <div className=' bg-gray-800 flex flex-col p-3 rounded-xl gap-4'>
+              <div className=' bg-ternaryDark flex flex-col p-3 rounded-xl gap-4'>
                 <div>Id Ticket : {data.id_ticket}</div>
                 <div>Destination :{data.schedule.destination.name}</div>
                 <div>Spaceship : {data.schedule.spaceship.name}</div>
-                <div>Time Depart : {data.schedule.time_depart.toJSON()}</div>
-                <div>Time Landing : {data.schedule.time_land.toJSON()}</div>
-                <div className='base__button bg-red-500 hover:bg-red-700' onClick={() => handleConfirm(data.id_ticket)}>Approve Cancellation</div>
+                <div>Time Depart : {data.schedule.time_depart}</div>
+                <div>Time Landing : {data.schedule.time_land}</div>
+                <div className='button__danger' onClick={() => handleConfirm(data.id_ticket)}>Approve Cancellation</div>
               </div>
             )
           })}
         </div>
       </div>
 
-      <div className='flex flex-col gap-4 bg-gray-700 rounded-xl p-3'>
+      <div className='flex flex-col gap-4 bg-primaryDark rounded-xl p-3'>
         <div className=' text-xl'>Cancelled Tickets</div>
         <div className=' flex flex-col gap-4'>
           {props.data.length === 0 && (
@@ -123,8 +123,8 @@ const PlanetDetails = (props: Props) => {
                 <div>Id Ticket : {data.id_ticket}</div>
                 <div>Destination :{data.schedule.destination.name}</div>
                 <div>Spaceship : {data.schedule.spaceship.name}</div>
-                <div>Time Depart : {data.schedule.time_depart.toJSON()}</div>
-                <div>Time Landing : {data.schedule.time_land.toJSON()}</div>
+                <div>Time Depart : {data.schedule.time_depart}</div>
+                <div>Time Landing : {data.schedule.time_land}</div>
               </div>
             )
           })}

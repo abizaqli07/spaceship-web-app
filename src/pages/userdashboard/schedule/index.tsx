@@ -45,7 +45,7 @@ const UserSchedule = (props: Props) => {
         <div className=' flex flex-col gap-8'>
           <div className=' w-full bg-gray-600 flex flex-col gap-4 p-6 rounded-xl'>
             <div>Input New Schedule :</div>
-            <div className=' base__button bg-lime-500 hover:bg-lime-700 font-medium' onClick={() => router.push(`${router.pathname}/inputschedule`)}>Input</div>
+            <div className=' button__confirm font-medium' onClick={() => router.push(`${router.pathname}/inputschedule`)}>Input</div>
           </div>
           <div>
             No Data Found
@@ -61,7 +61,7 @@ const UserSchedule = (props: Props) => {
         <div className=' flex flex-col gap-8'>
           <div className=' w-full bg-gray-600 flex flex-col gap-4 p-6 rounded-xl'>
             <div>Input New Schedule :</div>
-            <div className=' base__button bg-lime-500 hover:bg-lime-700 font-medium' onClick={() => router.push(`${router.pathname}/inputschedule`)}>Input</div>
+            <div className=' button__confirm font-medium' onClick={() => router.push(`${router.pathname}/inputschedule`)}>Input</div>
           </div>
           <div>
             error occured
@@ -82,18 +82,18 @@ const UserSchedule = (props: Props) => {
           {
             schedule.data.schedule.map((data) => {
               return (
-                <div key={data.id_schedule} className=" bg-gray-600 p-6 rounded-lg flex flex-col gap-4">
+                <div key={data.id_schedule} className=" bg-secondaryDark p-6 rounded-lg flex flex-col gap-4">
                   <div>Destination : {data.destination.name}</div>
                   <div>Price : {data.price.toString()}</div>
                   <div>Capacity : {data.capacity.toString()}</div>
                   <div className=' flex flex-col gap-4'>
-                    <div>Time Departure : {data.time_depart.toDateString()}</div>
-                    <div>Time Landing : {data.time_land.toDateString()}</div>
+                    <div>Time Departure : {data.time_depart}</div>
+                    <div>Time Landing : {data.time_land}</div>
                   </div>
                   <div className=' flex gap-4'>
                     <Link
                       href={`${router.pathname}/details/${data.id_schedule}`}
-                      className="base__button bg-lime-500 hover:bg-lime-700"
+                      className="button__confirm"
                     >Details</Link>
                   </div>
                 </div>

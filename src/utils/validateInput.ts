@@ -56,6 +56,21 @@ export interface UpdateScheduleInterface {
   time_land: string;
 }
 
+export interface InputBlogInterface {
+  title: string;
+  description: string;
+  link: string;
+  image: string
+}
+
+export interface UpdateBlogInterface {
+  id: string;
+  title: string;
+  description: string;
+  link: string;
+  image: string
+}
+
 export function inputSpaceshipValidate(values: InputSpaceshipInterface) {
   const error: any = {}
 
@@ -188,5 +203,49 @@ export function updateScheduleValidate(values: UpdateScheduleInterface) {
   if (!values.time_land) {
     error.time_land = "Required"
   }
+  return error
+}
+
+export function inputBlogValidate(values: InputBlogInterface) {
+  const error: any = {}
+
+  if (!values.title) {
+    error.capacity = "Required"
+  }
+
+  if (!values.description) {
+    error.pilotId = "Required"
+  }
+
+  if (!values.link) {
+    error.planetId = "Required"
+  }
+
+  if (!values.image) {
+    error.price = "Required"
+  }
+
+  return error
+}
+
+export function updateBlogValidate(values: UpdateBlogInterface) {
+  const error: any = {}
+
+  if (!values.title) {
+    error.capacity = "Required"
+  }
+
+  if (!values.description) {
+    error.pilotId = "Required"
+  }
+
+  if (!values.link) {
+    error.planetId = "Required"
+  }
+
+  if (!values.image) {
+    error.price = "Required"
+  }
+  
   return error
 }

@@ -70,7 +70,7 @@ const InputSpaceship = (props: Props) => {
     <AdminLayout>
 
       {callback.visible && (
-        <div className=' p-4 bg-gray-600 flex flex-col gap-4'>
+        <div className='popup'>
           <div>{callback.data?.message}</div>
           <div>{callback.data?.error ? "Error Occured" : ""}</div>
           <div className=' flex gap-3'>
@@ -132,19 +132,21 @@ const InputSpaceship = (props: Props) => {
             />
             {formik.errors.distance && formik.touched.distance ? <span className='text-rose-500'>{formik.errors.distance}</span> : <></>}
           </div>
-          <div className='input__wrapper'>
+          <div className='input__wrapper '>
             <label>Explored ?</label>
             <input 
-              type="checkbox" 
+              type="checkbox"
+              className='input__check'
               id="is_explored" 
               {...formik.getFieldProps('is_explored')}
               checked={formik.values.is_explored!}
             />
           </div>
-          <div className='input__wrapper'>
+          <div className='input__wrapper '>
             <label>Populated ? :</label>
             <input 
               type="checkbox" 
+              className='input__check'
               id="is_populated" 
               {...formik.getFieldProps('is_populated')}
               checked={formik.values.is_populated!}
@@ -152,7 +154,7 @@ const InputSpaceship = (props: Props) => {
           </div>
 
           <div >
-            <input className=" base__button bg-lime-500 hover:bg-lime-700" type="submit" value="Input" />
+            <input className="button__confirm" type="submit" value="Input" />
           </div>
         </form>
       </div>

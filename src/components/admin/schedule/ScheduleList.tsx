@@ -29,39 +29,39 @@ const ScheduleList = (props: Props) => {
   return (
     <div>
       {confirm.visible && (
-        <div className=' p-4 bg-gray-600 flex flex-col gap-4'>
+        <div className=' popup'>
           <div>Anda ingin menghapus?</div>
           <div className=' flex gap-3'>
             <div className='base__button bg-gray-500 hover:bg-gray-700' onClick={() => setConfirm({ visible: false, id: "" })}>Cancel</div>
-            <div className='base__button bg-red-500 hover:bg-red-700' onClick={() => handleDelete()}>Confirm</div>
+            <div className='button__danger' onClick={() => handleDelete()}>Confirm</div>
           </div>
         </div>
       )}
 
       {deleteSchedule.isError && (
-        <div className='flex flex-col gap-4'>
+        <div className='popup'>
           <div>{deleteSchedule.error.message}</div>
         </div>
       )}
 
-      <div className='flex flex-col gap-8'>
+      <div className='list__wrapper'>
         {
           props.data.map((data) => {
             return (
-              <div key={data.id_schedule} className=" bg-gray-600 p-6 rounded-lg flex flex-col gap-4">
+              <div key={data.id_schedule} className=" bg-secondaryDark p-6 rounded-lg flex flex-col gap-4">
                 <div>Destination : {data.destination.name}</div>
                 <div>Price : {data.price.toString()}</div>
                 <div>Capacity : {data.capacity.toString()}</div>
                 <div className=' flex flex-col gap-4'>
-                  <div>Time Departure : {data.time_depart.toDateString()}</div>
-                  <div>Time Landing : {data.time_land.toDateString()}</div>
+                  <div>Time Departure : {data.time_depart}</div>
+                  <div>Time Landing : {data.time_land}</div>
                 </div>
                 <div className=' flex gap-4'>
                   <Link
                     href={`${router.pathname}/details/${data.id_schedule}`}
-                    className="base__button bg-lime-500 hover:bg-lime-700"
+                    className="button__confirm"
                   >Details</Link>
-                  <div className='base__button bg-red-500 hover:bg-red-700' onClick={() => handleConfirm(data.id_schedule)}>Delete</div>
+                  <div className='button__danger' onClick={() => handleConfirm(data.id_schedule)}>Delete</div>
                 </div>
               </div>
             )

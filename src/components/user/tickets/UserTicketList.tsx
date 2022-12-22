@@ -56,26 +56,27 @@ const UserTicketList = (props: Props) => {
   const handleDelete = async () => {
     deleteTicket.mutate({ id: confirmDelete.id })
     setConfirmDelete({ visible: false, id: "" })
+    router.reload()
   }
 
   return (
     <div>
       {confirm.visible && (
-        <div className=' p-4 bg-gray-600 flex flex-col gap-4'>
+        <div className=' popup'>
           <div>Cancel Purchase ?</div>
           <div className=' flex gap-3'>
             <div className='base__button bg-gray-500 hover:bg-gray-700' onClick={() => setConfirm({ visible: false, id: "" })}>Cancel</div>
-            <div className='base__button bg-red-500 hover:bg-red-700' onClick={() => handleCancel()}>Confirm</div>
+            <div className='button__danger' onClick={() => handleCancel()}>Confirm</div>
           </div>
         </div>
       )}
 
       {confirmDelete.visible && (
-        <div className=' p-4 bg-gray-600 flex flex-col gap-4'>
+        <div className=' popup'>
           <div>Delete Ticket ?</div>
           <div className=' flex gap-3'>
             <div className='base__button bg-gray-500 hover:bg-gray-700' onClick={() => setConfirmDelete({ visible: false, id: "" })}>Cancel</div>
-            <div className='base__button bg-red-500 hover:bg-red-700' onClick={() => handleDelete()}>Confirm</div>
+            <div className='button__danger' onClick={() => handleDelete()}>Confirm</div>
           </div>
         </div>
       )}
@@ -87,7 +88,7 @@ const UserTicketList = (props: Props) => {
       )}
 
       {callback.visible && (
-        <div className=' p-4 bg-gray-600 flex flex-col gap-4'>
+        <div className=' popup'>
           <div>{callback.data?.message}</div>
           <div>{callback.data?.error ? "Error Occured" : ""}</div>
           <div className=' flex gap-3'>
@@ -96,20 +97,20 @@ const UserTicketList = (props: Props) => {
         </div>
       )}
 
-      <div className='flex flex-col gap-8'>
+      <div className='list__wrapper'>
         {
           props.data.map((data) => {
             return (
-              <div key={data.id_ticket} className=" bg-gray-600 p-6 rounded-lg flex flex-col gap-4">
+              <div key={data.id_ticket} className=" bg-secondaryDark p-6 rounded-lg flex flex-col gap-4">
                 <div>Nama : {data.schedule.destination.name}</div>
                 <div>Description : {data.schedule.spaceship.name}</div>
-                <div>Time Departure : {`${data.schedule.time_depart.toJSON().split("T")[0]} ${data.schedule.time_depart.toJSON().split("T")[1]}`}</div>
-                <div>Time Landed : {`${data.schedule.time_land.toJSON().split("T")[0]} ${data.schedule.time_land.toJSON().split("T")[1]}`}</div>
+                <div>Time Departure : {`${data.schedule.time_depart.split("T")[0]} ${data.schedule.time_depart.split("T")[1]}`}</div>
+                <div>Time Landed : {`${data.schedule.time_land.split("T")[0]} ${data.schedule.time_land.split("T")[1]}`}</div>
                 <div className=' flex flex-col gap-4'>
                   <div>Total price : {data.schedule.price.toString()}</div>
                 </div>
                 {(data.ticket_has_status?.status === "ACTIVE") && (
-                  <div className='base__button bg-red-500 hover:bg-red-700' onClick={() => handleConfirm(data.id_ticket)}>Cancel Ticket</div>
+                  <div className='button__danger' onClick={() => handleConfirm(data.id_ticket)}>Cancel Ticket</div>
                 )}
                 {(data.ticket_has_status?.status === "WAITING") && (
                   <div className='base__button bg-gray-700'>Waiting for Cancellation Approval</div>
@@ -117,7 +118,7 @@ const UserTicketList = (props: Props) => {
                 {(data.ticket_has_status?.status === "CANCELLED") && (
                   <div className='flex gap-2'>
                     <div className='base__button bg-gray-700'>Ticket Cancelled </div>
-                    <div className=' base__button bg-red-500 hover:bg-red-700' onClick={() => handleConfirmDelete(data.id_ticket)}>Delete data ticket</div>
+                    <div className=' button__danger' onClick={() => handleConfirmDelete(data.id_ticket)}>Delete data ticket</div>
                   </div>
                 )}
               </div>

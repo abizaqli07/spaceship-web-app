@@ -56,7 +56,7 @@ const UserProfileUpdate = (props: Props) => {
   return (
     <div>
       {callback.visible && (
-        <div className=' p-4 bg-gray-600 flex flex-col gap-4'>
+        <div className=' popup'>
           <div>{callback.data?.message}</div>
           <div>{callback.data?.error ? callback.data.error : ""}</div>
           <div className=' flex gap-3'>
@@ -66,9 +66,9 @@ const UserProfileUpdate = (props: Props) => {
       )}
 
       <div className=' flex flex-col gap-8'>
-        <div className='w-full rounded-xl bg-gray-600 p-3'>
-          <div className='base__button bg-lime-500 hover:bg-lime-700' onClick={() => {
-            setEnableEdit(false);
+        <div className='w-full rounded-xl bg-secondaryDark p-3'>
+          <div className='button__confirm' onClick={() => {
+            setEnableEdit(!enableEdit);
             setHavePass(true)
           }}>{props.data?.passenger ? "Update" : "Create"}</div>
         </div>
@@ -96,7 +96,7 @@ const UserProfileUpdate = (props: Props) => {
                 {...formik.getFieldProps('no_tlp')}
               />
             </div>
-            <div className='input__wrapper bg-gray-700 p-3 rounded-xl'>
+            <div className='input__container'>
               <label> Datebirth :</label>
               {props.data?.passenger && (
                 <div>Date : {props.data.passenger.datebirth.split("T")[0]}</div>
@@ -115,7 +115,7 @@ const UserProfileUpdate = (props: Props) => {
 
             {!enableEdit && (
               <div>
-                <input className=" base__button bg-lime-500 hover:bg-lime-700" type="submit" value="Submit" />
+                <input className=" button__confirm" type="submit" value="Submit" />
               </div>
             )}
           </form>

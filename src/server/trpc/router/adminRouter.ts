@@ -1,4 +1,5 @@
 import { protectedProcedure, router } from "../trpc";
+import { adminBlogRoute } from "./adminRoute/blog";
 import { adminPassengerRoute } from "./adminRoute/passenger";
 import { adminPilotsRoute } from "./adminRoute/pilots";
 import { adminPlanetRoute } from "./adminRoute/planet";
@@ -62,5 +63,6 @@ export const adminRouter = router({
   schedule: adminScheduleRoute,
   passenger: adminPassengerRoute,
   pilots: adminPilotsRoute,
-  ticket: adminTicketRoute
+  ticket: adminTicketRoute,
+  blog: adminBlogRoute,
 });
