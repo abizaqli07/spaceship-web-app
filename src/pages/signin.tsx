@@ -27,7 +27,7 @@ const Signin = () => {
   })
 
   async function onSubmit(values: FormLoginInterface) {
-    const status = await signIn("credentials", {
+    const status = await signIn("multiuser-login", {
       redirect: false,
       email: values.email,
       password: values.password,
