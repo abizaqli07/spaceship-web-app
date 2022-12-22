@@ -1,7 +1,6 @@
-import { planet, schedule, spaceship, pilots } from '@prisma/client'
+import { pilots, planet, schedule, spaceship } from '@prisma/client'
 import { FormikProps, useFormik } from 'formik'
-import React, { SetStateAction, use, useState } from 'react'
-import { TypeOf } from 'zod'
+import { useState } from 'react'
 import { trpc } from '../../../utils/trpc'
 import { UpdateScheduleInterface, updateScheduleValidate } from '../../../utils/validateInput'
 
@@ -79,6 +78,7 @@ const SscheduleUpdate = (props: Props) => {
               {props.planet.map((planet) => {
                 return (
                   <option
+                    key={planet.id_planet}
                     className='input__field'
                     value={planet.id_planet}
                   > {planet.name} </option>
@@ -94,6 +94,7 @@ const SscheduleUpdate = (props: Props) => {
               {props.spaceship.map((spaceship) => {
                 return (
                   <option
+                    key={spaceship.id_spaceship}
                     className='input__field'
                     value={spaceship.id_spaceship}
                   > {spaceship.name} </option>
@@ -109,6 +110,7 @@ const SscheduleUpdate = (props: Props) => {
               {props.pilots.map((pilots) => {
                 return (
                   <option
+                    key={pilots.id_pilot}
                     className='input__field'
                     value={pilots.id_pilot}
                   > {pilots.name} </option>

@@ -7,8 +7,6 @@ import { getServerAuthSession } from '../../../server/common/get-server-auth-ses
 import { trpc } from '../../../utils/trpc';
 import BlogList from '../../../components/admin/blog/BlogList';
 
-type Props = {}
-
 export async function getServerSideProps(ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
@@ -29,7 +27,7 @@ export async function getServerSideProps(ctx: {
   }
 }
 
-const Blog = (props: Props) => {
+const Blog = () => {
   const router = useRouter()
 
   const blog = trpc.adminRouter.blog.getBlog.useQuery()

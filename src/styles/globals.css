@@ -73,6 +73,9 @@ a {
     @apply duration-500 transition-all ease-out
   }
 
+  /* ================  Swiper Component ================== */
+  
+
 
   /* =============== Signup Components ================ */
   .input__group {

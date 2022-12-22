@@ -1,7 +1,7 @@
-import { planet, spaceship, pilots } from '@prisma/client'
+import { pilots, planet, spaceship } from '@prisma/client'
 
 import { FormikProps, useFormik } from 'formik'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import { trpc } from '../../../utils/trpc'
 import { InputScheduleInterface, inputScheduleValidate } from '../../../utils/validateInput'
@@ -70,6 +70,7 @@ const ScheduleInputAdmin = (props: Props) => {
               {props.planet.map((planet) => {
                 return (
                   <option
+                    key={planet.id_planet}
                     className='input__field'
                     value={planet.id_planet}
                   > {planet.name} </option>
@@ -86,6 +87,7 @@ const ScheduleInputAdmin = (props: Props) => {
               {props.spaceship.map((spaceship) => {
                 return (
                   <option
+                    key={spaceship.id_spaceship}
                     className='input__field'
                     value={spaceship.id_spaceship}
                   > {spaceship.name} </option>
@@ -102,6 +104,7 @@ const ScheduleInputAdmin = (props: Props) => {
               {props.pilots.map((pilots) => {
                 return (
                   <option
+                    key={pilots.id_pilot}
                     className='input__field'
                     value={pilots.id_pilot}
                   > {pilots.name} </option>

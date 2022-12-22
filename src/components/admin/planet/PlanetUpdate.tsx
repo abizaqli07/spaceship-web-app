@@ -1,7 +1,6 @@
 import { planet } from '@prisma/client'
 import { FormikProps, useFormik } from 'formik'
-import React, { SetStateAction, use, useState } from 'react'
-import { TypeOf } from 'zod'
+import { useState } from 'react'
 import { trpc } from '../../../utils/trpc'
 import { UpdatePlanetInterface, updatePlanetValidate } from '../../../utils/validateInput'
 

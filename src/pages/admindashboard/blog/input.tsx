@@ -18,8 +18,6 @@ interface callbackData {
   } | null
 }
 
-type Props = {}
-
 export async function getServerSideProps(ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
@@ -40,7 +38,7 @@ export async function getServerSideProps(ctx: {
   }
 }
 
-const InputBlog = (props: Props) => {
+const InputBlog = () => {
   const [callback, setCallback] = useState<callbackData>({ visible: false, data: null })
 
   const formik: FormikProps<InputBlogInterface> = useFormik<InputBlogInterface>({

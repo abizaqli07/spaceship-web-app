@@ -1,23 +1,18 @@
+import { signIn } from 'next-auth/react'
 import { useState } from 'react'
-import { signIn, useSession } from 'next-auth/react'
 
 import Head from 'next/head'
-import Image from 'next/image'
 import Link from 'next/link'
 import Layout from '../components/SignUp/layout'
 
-import loginValidate, { FormLoginInterface } from '../utils/validateSignUp'
-import { useFormik, FormikProps } from 'formik'
+import { FormikProps, useFormik } from 'formik'
 import { useRouter } from 'next/router'
-import { trpc } from '../utils/trpc'
+import loginValidate, { FormLoginInterface } from '../utils/validateSignUp'
 
 
-import { HiAtSymbol, HiFingerPrint } from "react-icons/hi";
-import { hash } from 'bcryptjs'
+import { HiAtSymbol, HiFingerPrint } from "react-icons/hi"
 
-type Props = {}
-
-const Signin = (props: Props) => {
+const Signin = () => {
 
   const [show, setShow] = useState(false)
   const router = useRouter()
@@ -98,7 +93,7 @@ const Signin = (props: Props) => {
 
         {/* Bottom */}
         <div className='text-center text-gray-400 '>
-          don't have an account yet? <Link href={'/signup'}><div className='text-blue-700'>Sign Up</div></Link>
+          dont have an account yet? <Link href={'/signup'}><div className='text-blue-700'>Sign Up</div></Link>
         </div>
       </section>
     </Layout>

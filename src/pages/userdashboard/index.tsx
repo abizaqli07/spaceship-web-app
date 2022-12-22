@@ -1,15 +1,11 @@
 import { type GetServerSidePropsContext } from "next";
 
-import Link from 'next/link'
-import React from 'react'
-import { useSession, signOut } from "next-auth/react"
 import { unstable_getServerSession } from "next-auth";
+import { useSession } from "next-auth/react";
+import Link from 'next/link';
 import { authOptions } from "../api/auth/[...nextauth]";
 
-import { trpc } from "../../utils/trpc";
 import UserLayout from "../../components/user/UserLayout";
-
-type Props = {}
 
 export async function getServerSideProps(ctx: {
   req: GetServerSidePropsContext["req"];
@@ -32,7 +28,7 @@ export async function getServerSideProps(ctx: {
   }
 }
 
-const User = (props: Props) => {
+const User = () => {
   const { data: sessionData } = useSession()
 
   console.log(sessionData)

@@ -18,8 +18,6 @@ interface callbackData {
   } | null
 }
 
-type Props = {}
-
 export async function getServerSideProps(ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
@@ -40,7 +38,7 @@ export async function getServerSideProps(ctx: {
   }
 }
 
-const InputSpaceship = (props: Props) => {
+const InputSpaceship = () => {
   const [callback, setCallback] = useState<callbackData>({ visible: false, data: null })
 
   const formik: FormikProps<InputPlanetInterface> = useFormik<InputPlanetInterface>({

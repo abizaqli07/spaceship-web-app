@@ -1,7 +1,6 @@
 import { planet, schedule, spaceship, ticket, ticket_has_status } from '@prisma/client'
-import React, { useState } from 'react'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
 import { trpc } from '../../../utils/trpc'
 
 type Props = {

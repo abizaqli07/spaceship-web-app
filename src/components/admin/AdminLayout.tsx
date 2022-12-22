@@ -9,8 +9,8 @@ import { AiFillSchedule, AiFillSetting } from 'react-icons/ai';
 import { BiPlanet, BiSearch } from 'react-icons/bi';
 import { FaSpaceShuttle, FaUserAlt, FaUserAstronaut, FaUserSecret } from 'react-icons/fa';
 import { FiUsers } from 'react-icons/fi';
-import { MdOutlineDashboard } from 'react-icons/md';
 import { HiNewspaper } from 'react-icons/hi';
+import { MdOutlineDashboard } from 'react-icons/md';
 
 
 const AdminLayout = ({ children }: PropsWithChildren) => {
@@ -110,7 +110,7 @@ const AdminLayout = ({ children }: PropsWithChildren) => {
                     className={`${normalLink}`}
                   >
                     <HiNewspaper />
-                    <span className="capitalize ">Blog's</span>
+                    <span className="capitalize">Blogs</span>
                   </Link>
                 </div>
 

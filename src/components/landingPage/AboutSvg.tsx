@@ -1,8 +1,4 @@
-import React from 'react'
-
-type Props = {}
-
-const AboutSvg = (props: Props) => {
+const AboutSvg = () => {
   return (
     <svg className="w-full sm:h-64 mx-auto" viewBox="0 0 1177 598.5" xmlns="http://www.w3.org/2000/svg">
       <title>travel booking</title>

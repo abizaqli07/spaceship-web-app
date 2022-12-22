@@ -6,8 +6,6 @@ import ScheduleInputAdmin from '../../../components/admin/schedule/ScheduleInput
 import { getServerAuthSession } from '../../../server/common/get-server-auth-session';
 import { trpc } from '../../../utils/trpc';
 
-type Props = {}
-
 export async function getServerSideProps(ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
@@ -28,7 +26,7 @@ export async function getServerSideProps(ctx: {
   }
 }
 
-const InputSpaceship = (props: Props) => {
+const InputSpaceship = () => {
   const dataSpaceship = trpc.adminRouter.spaceship.getSpaceship.useQuery()
   const dataPilots = trpc.adminRouter.pilots.getPilots.useQuery()
   const dataPlanet = trpc.adminRouter.planet.getPlanet.useQuery()

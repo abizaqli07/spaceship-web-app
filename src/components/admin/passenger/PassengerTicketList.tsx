@@ -1,11 +1,9 @@
-import { GetServerSidePropsContext } from 'next/types';
-import { ticket, spaceship, planet, ticket_has_status } from '@prisma/client'
+import { planet, spaceship, ticket, ticket_has_status } from '@prisma/client';
 
 import { useRouter } from 'next/router';
 
-import { getServerAuthSession } from '../../../server/common/get-server-auth-session';
-import { trpc } from '../../../utils/trpc';
 import { useState } from 'react';
+import { trpc } from '../../../utils/trpc';
 
 type Props = {
   data: (ticket & {
@@ -78,7 +76,7 @@ const PlanetDetails = (props: Props) => {
           )}
           {props.data && props.data.filter((prev) => prev.ticket_has_status?.status === "ACTIVE").map((data) => {
             return (
-              <div className=' bg-ternaryDark flex flex-col p-3 rounded-xl gap-4'>
+              <div className=' bg-ternaryDark flex flex-col p-3 rounded-xl gap-4' key={data.id_ticket}>
                 <div>Id Ticket : {data.id_ticket}</div>
                 <div>Destination :{data.schedule.destination.name}</div>
                 <div>Spaceship : {data.schedule.spaceship.name}</div>
@@ -98,7 +96,7 @@ const PlanetDetails = (props: Props) => {
           )}
           {props.data && props.data.filter((prev) => prev.ticket_has_status?.status === "WAITING").map((data) => {
             return (
-              <div className=' bg-ternaryDark flex flex-col p-3 rounded-xl gap-4'>
+              <div className=' bg-ternaryDark flex flex-col p-3 rounded-xl gap-4' key={data.id_ticket}>
                 <div>Id Ticket : {data.id_ticket}</div>
                 <div>Destination :{data.schedule.destination.name}</div>
                 <div>Spaceship : {data.schedule.spaceship.name}</div>
@@ -119,7 +117,7 @@ const PlanetDetails = (props: Props) => {
           )}
           {props.data && props.data.filter((prev) => prev.ticket_has_status?.status === "CANCELLED").map((data) => {
             return (
-              <div className=' bg-gray-800 flex flex-col p-3 rounded-xl gap-4'>
+              <div className=' bg-gray-800 flex flex-col p-3 rounded-xl gap-4' key={data.id_ticket}>
                 <div>Id Ticket : {data.id_ticket}</div>
                 <div>Destination :{data.schedule.destination.name}</div>
                 <div>Spaceship : {data.schedule.spaceship.name}</div>

@@ -1,9 +1,7 @@
 import React from 'react'
 import PilotLayout from '../../components/pilot/PilotDashboardLayout'
 
-type Props = {}
-
-const Pilot = (props: Props) => {
+const Pilot = () => {
   return (
     <PilotLayout>
       Pilot dashboard

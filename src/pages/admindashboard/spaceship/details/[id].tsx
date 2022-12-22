@@ -1,17 +1,11 @@
 import { GetServerSidePropsContext } from 'next/types';
-import { UpdateSpaceshipInterface } from '../../../../utils/validateInput';
 
-import React, { useState } from 'react'
-import { FormikProps, useFormik } from 'formik'
 import { useRouter } from 'next/router';
 
+import AdminLayout from '../../../../components/admin/AdminLayout';
+import SpaceshipUpdate from '../../../../components/admin/spaceship/SpaceshipUpdate';
 import { getServerAuthSession } from '../../../../server/common/get-server-auth-session';
 import { trpc } from '../../../../utils/trpc';
-import AdminLayout from '../../../../components/admin/AdminLayout';
-import { updateSpaceshipValidate } from '../../../../utils/validateInput';
-import SpaceshipUpdate from '../../../../components/admin/spaceship/SpaceshipUpdate';
-
-type Props = {}
 
 export async function getServerSideProps(ctx: {
   req: GetServerSidePropsContext["req"];
@@ -33,9 +27,9 @@ export async function getServerSideProps(ctx: {
   }
 }
 
-const SpaceshipDetails = (props: Props) => {
+const SpaceshipDetails = () => {
   const router = useRouter()
-  let { id } = router.query
+  const { id } = router.query
 
   const detail = trpc.adminRouter.spaceship.getDetailSpaceship.useQuery({ id: id as string })
 

@@ -4,8 +4,6 @@ import { BsArrowRightShort } from 'react-icons/bs'
 import { FaBriefcaseMedical, FaToilet } from 'react-icons/fa'
 import { MdFastfood } from 'react-icons/md'
 
-type Props = {}
-
 interface Details {
   key: React.Key
   name: string
@@ -13,7 +11,7 @@ interface Details {
   icon: React.ReactNode
 }
 
-const Services = (props: Props) => {
+const Services = () => {
   const ServiceDetail: Details[] = [
     {
       key: 1,

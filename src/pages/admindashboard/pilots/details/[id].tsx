@@ -3,11 +3,8 @@ import { GetServerSidePropsContext } from 'next/types';
 import { useRouter } from 'next/router';
 
 import AdminLayout from '../../../../components/admin/AdminLayout';
-import PlanetUpdate from '../../../../components/admin/planet/PlanetUpdate';
 import { getServerAuthSession } from '../../../../server/common/get-server-auth-session';
 import { trpc } from '../../../../utils/trpc';
-
-type Props = {}
 
 export async function getServerSideProps(ctx: {
   req: GetServerSidePropsContext["req"];
@@ -29,9 +26,9 @@ export async function getServerSideProps(ctx: {
   }
 }
 
-const PlanetDetails = (props: Props) => {
+const PlanetDetails = () => {
   const router = useRouter()
-  let { id } = router.query
+  const { id } = router.query
 
   const detail = trpc.adminRouter.pilots.getDetailPilots.useQuery({ id: id as string })
 
@@ -82,7 +79,7 @@ const PlanetDetails = (props: Props) => {
             )}
             {d.schedule && d.schedule.map((data) => {
               return (
-                <div className=' bg-secondaryDark flex flex-col p-3 rounded-xl gap-4'>
+                <div className=' bg-secondaryDark flex flex-col p-3 rounded-xl gap-4' key={data.id_schedule}>
                   <div>Id Ticket : {data.id_schedule}</div>
                   <div>Destination :{data.destination.name}</div>
                   <div>Spaceship : {data.spaceship.name}</div>

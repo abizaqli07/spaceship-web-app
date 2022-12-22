@@ -16,19 +16,6 @@ export const adminBlogRoute = router({
         blog
       }
     }),
-  getUserBlog: protectedProcedure
-    .query(async ({ ctx }) => {
-      const blog = await ctx.prisma.blog.findMany({
-        orderBy: {
-          created_at: 'desc'
-        },
-        take: 3
-      })
-
-      return {
-        blog
-      }
-    }),
   getDetailBlog: protectedProcedure
     .input(z.object({ id: z.string() }))
     .query(async ({ input, ctx }) => {

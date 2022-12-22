@@ -77,5 +77,18 @@ export const signUpRouter = router({
         }
       }
 
-    })
+    }),
+  getUserBlog: publicProcedure
+    .query(async ({ ctx }) => {
+      const blog = await ctx.prisma.blog.findMany({
+        orderBy: {
+          created_at: 'desc'
+        },
+        take: 3
+      })
+
+      return {
+        blog
+      }
+    }),
 });

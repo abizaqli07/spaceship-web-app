@@ -11,10 +11,8 @@ import { HiAtSymbol, HiFingerPrint, HiOutlineUser } from "react-icons/hi"
 
 import { useRouter } from 'next/router'
 
-type Props = {}
 
-
-const SignUp = (props: Props) => {
+const SignUp = () => {
   const [show, setShow] = useState({ password: false, cpassword: false })
   
   const formik: FormikProps<FormRegisterInterface> = useFormik<FormRegisterInterface>({

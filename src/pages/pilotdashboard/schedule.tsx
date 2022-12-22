@@ -6,8 +6,6 @@ import PilotLayout from '../../components/pilot/PilotDashboardLayout';
 import { getServerAuthSession } from '../../server/common/get-server-auth-session';
 import { trpc } from '../../utils/trpc';
 
-type Props = {}
-
 export async function getServerSideProps(ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
@@ -28,7 +26,7 @@ export async function getServerSideProps(ctx: {
   }
 }
 
-const PilotSchedule = (props: Props) => {
+const PilotSchedule = () => {
   const router = useRouter()
 
   const pilotData = trpc.pilotRouter.schedule.getSchedule.useQuery()

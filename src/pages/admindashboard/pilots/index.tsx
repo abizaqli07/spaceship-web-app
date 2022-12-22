@@ -6,8 +6,6 @@ import PilotsList from '../../../components/admin/pilots/PilotsList';
 import { getServerAuthSession } from '../../../server/common/get-server-auth-session';
 import { trpc } from '../../../utils/trpc';
 
-type Props = {}
-
 export async function getServerSideProps(ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
@@ -28,7 +26,7 @@ export async function getServerSideProps(ctx: {
   }
 }
 
-const AdminPilots = (props: Props) => {
+const AdminPilots = () => {
   const router = useRouter()
 
   const pilots = trpc.adminRouter.pilots.getPilots.useQuery()

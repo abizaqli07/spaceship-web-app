@@ -8,7 +8,7 @@ import type { PropsWithChildren } from 'react';
 
 import { AiFillSchedule, AiFillSetting } from 'react-icons/ai';
 import { BiSearch } from 'react-icons/bi';
-import { FaUserAlt, FaUserSecret } from 'react-icons/fa';
+import { FaUserAlt } from 'react-icons/fa';
 import { FiUsers } from 'react-icons/fi';
 import { IoTicket } from 'react-icons/io5';
 import { MdOutlineDashboard } from 'react-icons/md';

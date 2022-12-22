@@ -1,12 +1,6 @@
 import { GetServerSidePropsContext } from 'next/types';
-import { useEffect } from 'react';
 import AdminLayout from '../../components/admin/AdminLayout';
 import { getServerAuthSession } from '../../server/common/get-server-auth-session';
-import { trpc } from '../../utils/trpc';
-import { useRouter } from 'next/router';
-import { useSession } from 'next-auth/react';
-
-type Props = {}
 
 export async function getServerSideProps(ctx: {
   req: GetServerSidePropsContext["req"];
@@ -28,7 +22,7 @@ export async function getServerSideProps(ctx: {
   }
 }
 
-const Admin = (props: Props) => {
+const Admin = () => {
 
   return (
       <AdminLayout>

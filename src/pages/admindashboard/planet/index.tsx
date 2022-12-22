@@ -6,8 +6,6 @@ import PlanetList from '../../../components/admin/planet/PlanetList';
 import { getServerAuthSession } from '../../../server/common/get-server-auth-session';
 import { trpc } from '../../../utils/trpc';
 
-type Props = {}
-
 export async function getServerSideProps(ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
@@ -28,7 +26,7 @@ export async function getServerSideProps(ctx: {
   }
 }
 
-const Spaceship = (props: Props) => {
+const Spaceship = () => {
   const router = useRouter()
 
   const planet = trpc.adminRouter.planet.getPlanet.useQuery()

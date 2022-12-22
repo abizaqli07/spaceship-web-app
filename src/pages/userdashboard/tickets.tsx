@@ -6,8 +6,6 @@ import { trpc } from '../../utils/trpc';
 import UserTicketList from '../../components/user/tickets/UserTicketList';
 import UserLayout from '../../components/user/UserLayout';
 
-type Props = {}
-
 export async function getServerSideProps(ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
@@ -28,7 +26,7 @@ export async function getServerSideProps(ctx: {
   }
 }
 
-const UserTickets = (props: Props) => {
+const UserTickets = () => {
   const router = useRouter()
 
   const tickets = trpc.userRouter.ticket.getDetailTicket.useQuery()

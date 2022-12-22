@@ -1,7 +1,7 @@
-import { schedule, spaceship, planet, pilots, passenger, ticket, ticket_has_status } from '@prisma/client'
+import { passenger, pilots, planet, schedule, spaceship, ticket, ticket_has_status } from '@prisma/client'
 
-import React, { useState } from 'react'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
 import { trpc } from '../../../utils/trpc'
 
 type Props = {

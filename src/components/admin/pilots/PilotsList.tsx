@@ -1,8 +1,6 @@
-import { passenger, pilots } from '@prisma/client'
-import React, { useState } from 'react'
+import { pilots } from '@prisma/client'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { trpc } from '../../../utils/trpc'
 
 type Props = {
   data: pilots[]

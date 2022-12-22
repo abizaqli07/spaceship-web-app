@@ -7,8 +7,6 @@ import { trpc } from '../../../../utils/trpc';
 import UserLayout from '../../../../components/user/UserLayout';
 import UserScheduleDetail from '../../../../components/user/schedule/UserScheduleDetail';
 
-type Props = {}
-
 export async function getServerSideProps(ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
@@ -29,9 +27,9 @@ export async function getServerSideProps(ctx: {
   }
 }
 
-const ScheduleDetails = (props: Props) => {
+const ScheduleDetails = () => {
   const router = useRouter()
-  let { id } = router.query
+  const { id } = router.query
 
   const detail = trpc.userRouter.schedule.getDetailSchedule.useQuery({ id: id as string })
   const passenger = trpc.userRouter.ticket.getTicket.useQuery()

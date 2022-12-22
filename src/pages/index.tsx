@@ -1,35 +1,19 @@
 import { type NextPage } from "next";
-import Head from "next/head";
-import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
+import Head from "next/head";
 import { useRouter } from "next/router";
 
-import { trpc } from "../utils/trpc";
-import { hash } from "bcryptjs";
-import { userAgent } from "next/server";
 import { useState } from "react";
 import AboutSvg from "../components/landingPage/AboutSvg";
 import AboutSvgTwo from "../components/landingPage/AboutSvgTwo";
 import Services from "../components/landingPage/Services";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Autoplay } from "swiper";
-import Image from 'next/image'
 
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 
-import { BiRightArrow } from 'react-icons/bi'
 import Footer from "../components/landingPage/Footer";
-
-interface NewsType {
-  key: React.Key
-  name: string
-  desc: string
-  date: string
-  link: string
-  img: string
-}
+import NewsSwiper from "../components/landingPage/NewsSwiper";
 
 
 const Home: NextPage = () => {
@@ -137,7 +121,7 @@ const Home: NextPage = () => {
                 The best rocket company
               </h3>
               <p className=" mb-8">
-                Apolo star can bring you everywhere you want in this planet or other planet in this universe so don't worry about your trip              </p>
+                Apolo star can bring you everywhere you want in this planet or other planet in this universe so dont worry about your trip              </p>
             </div>
             <div className="w-full sm:w-1/2 p-6">
               <AboutSvg />
@@ -187,48 +171,7 @@ const Home: NextPage = () => {
           </div>
 
           <div className='mt-24'>
-            <div>
-
-              <Swiper
-                slidesPerView={1.1}
-                breakpoints={{
-                  768: {
-                    slidesPerView: 2,
-                    centeredSlides: false
-                  },
-                  900: {
-                    slidesPerView: 3
-                  }
-                }}
-                spaceBetween={80}
-                centeredSlides={true}
-                loop={true}
-                autoplay={{
-                  delay: 5500,
-                  disableOnInteraction: false,
-                }}
-                modules={[EffectCoverflow, Autoplay]}
-                className="newsswiper"
-              >
-                <SwiperSlide>
-                  <div className="flex flex-col rounded-xl overflow-hidden sm:grid sm:grid-cols-2 sm:max-h-72 md:flex md:flex-col md:max-h-fit  2xl:grid 2xl:grid-cols-2 xl:max-h-[21rem]">
-                    <div className="border-b-2 rounded-xl overflow-hidden border-primary max-h-60 sm:max-h-full sm:border-b-transparent sm:border-r-2 md:max-h-60 md:border-b-2 md:border-r-transparent xl:max-h-full xl:border-b-transparent xl:border-r-2">
-                      <img
-                        alt='News Picture'
-                        className="object-cover min-h-full min-w-full"
-                        src="/header.png"
-                      />
-                    </div>
-                    <div className="p-8 flex flex-col gap-y-4">
-                      <div className="text-normal font-semibold">May be once in lifetime</div>
-                      <div className="text-small">You can book and go to the top. Its worth it in the sense that you get this experience rarely - considering this is the tallest building. So may be once in a life time.</div>
-                      <div className="text-small bg-primary py-2 px-4 rounded-full w-fit flex items-center gap-x-2 transition-all duration-500 ease-out hover:gap-x-4 hover:bg-primary_hover cursor-pointer">View More<BiRightArrow /></div>
-                    </div>
-                  </div>
-                </SwiperSlide>
-              </Swiper>
-
-            </div>
+            <NewsSwiper/>
           </div>
 
         </div>

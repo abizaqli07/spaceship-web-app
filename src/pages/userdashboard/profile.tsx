@@ -8,8 +8,6 @@ import { getServerAuthSession } from '../../server/common/get-server-auth-sessio
 import { trpc } from '../../utils/trpc';
 import UserProfileUpdate from '../../components/user/profile/UserProfileUpdate';
 
-type Props = {}
-
 export async function getServerSideProps(ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
@@ -30,7 +28,7 @@ export async function getServerSideProps(ctx: {
   }
 }
 
-const UserProfile = (props: Props) => {
+const UserProfile = () => {
   const detail = trpc.userRouter.profile.getUserProfile.useQuery()
   
   const router = useRouter()

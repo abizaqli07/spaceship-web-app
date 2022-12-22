@@ -7,8 +7,6 @@ import PilotProfileUpdate from '../../components/pilot/profile/PilotProfileUpdat
 import { getServerAuthSession } from '../../server/common/get-server-auth-session';
 import { trpc } from '../../utils/trpc';
 
-type Props = {}
-
 export async function getServerSideProps(ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
@@ -29,7 +27,7 @@ export async function getServerSideProps(ctx: {
   }
 }
 
-const PilotProfile = (props: Props) => {
+const PilotProfile = () => {
   const detail = trpc.pilotRouter.profile.getPilotProfile.useQuery()
   
   const router = useRouter()

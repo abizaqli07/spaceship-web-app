@@ -6,8 +6,6 @@ import ScheduleList from '../../../components/admin/schedule/ScheduleList';
 import { getServerAuthSession } from '../../../server/common/get-server-auth-session';
 import { trpc } from '../../../utils/trpc';
 
-type Props = {}
-
 export async function getServerSideProps(ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
@@ -28,7 +26,7 @@ export async function getServerSideProps(ctx: {
   }
 }
 
-const AdminSchedule = (props: Props) => {
+const AdminSchedule = () => {
   const router = useRouter()
 
   const schedule = trpc.adminRouter.schedule.getSchedule.useQuery()
