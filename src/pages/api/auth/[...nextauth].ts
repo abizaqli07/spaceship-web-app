@@ -16,6 +16,7 @@ export const authOptions: NextAuthOptions = {
   // Credentials Provider for Auth
   providers: [
     CredentialsProvider({
+      id: "multiuser-login",
       name: "Credentials",
       credentials: {
         email: {},
